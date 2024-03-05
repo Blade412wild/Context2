@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Choice2
   m_EditorClassIdentifier: 
   ChoiceText: Koop een geweldige Playstation 5
-  newDict:
+  ChoiceImpactDict:
     thisDictItems:
-    - typeImpact: 1
-      Impact: 30
     - typeImpact: 0
-      Impact: -5
+      Impact: -50
+    - typeImpact: 1
+      Impact: 100

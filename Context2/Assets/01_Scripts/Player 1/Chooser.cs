@@ -8,27 +8,48 @@ public class Chooser : MonoBehaviour
     int choiceCounter = 0;
 
     [SerializeField] private Choices[] AllChoices;
+    [Header("Scripts")]
+    [SerializeField] private Stats player1Stats;
+
 
     [Header(" UI COMPONETS")]
     [SerializeField] private TextMeshProUGUI ChoiceText;
     [SerializeField] private TextMeshProUGUI Value1;
     [SerializeField] private TextMeshProUGUI Value2;
 
+    private Dictionary<ImpactChoices, int> currentChoiceDict;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Dictionary<ImpactChoices, int> choiceValues = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
-        UpdateUI(choiceValues);
+        currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
+        UpdateUI();
+        Debug.Log(choiceCounter);
+
+    }
+    public void onUIEnter()
+    {
+
+        CalculateTempValue(currentChoiceDict, true);
+    }
+
+    public void onUIExit()
+    {
+        CalculateTempValue(currentChoiceDict, false);
     }
 
     public void NextChoice()
     {
-        if (choiceCounter < AllChoices.Length - 1)
+        Debug.Log(choiceCounter);
+
+        if (choiceCounter < AllChoices.Length)
         {
+            currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
+            CalculateNewValue(currentChoiceDict, 1);
+
             choiceCounter++;
-            Dictionary<ImpactChoices, int> choiceValues = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
-            UpdateUI(choiceValues);
+            UpdateUI();
         }
         else
         {
@@ -36,24 +57,49 @@ public class Chooser : MonoBehaviour
         }
     }
 
-    private void UpdateUI(Dictionary<ImpactChoices, int> dict)
+    private void UpdateUI()
     {
-        ChoiceText.text = AllChoices[choiceCounter].ChoiceText;
-        Value1.text = " Climate : " + dict[ImpactChoices.climate].ToString();
-        Value2.text = " Economy : " + dict[ImpactChoices.economy].ToString();
-
-        Debug.Log("Climate : " + dict[ImpactChoices.climate]);
-        Debug.Log("Economy : " + dict[ImpactChoices.economy]);
-
+        if (choiceCounter < AllChoices.Length)
+        {
+            ChoiceText.text = AllChoices[choiceCounter].ChoiceText;
+            Value1.text = " Climate : " + player1Stats.Value1.ToString();
+            Value2.text = " Economy : " + player1Stats.Value2.ToString();
+        }
     }
 
-    public void onUIEnter()
+    private void UpdateTempUI(int value1, int value2)
     {
-        Debug.Log("enterUI");
+        Value1.text = " Climate : " + value1.ToString();
+        Value2.text = " Economy : " + value2.ToString();
     }
 
-    public void onUIExit()
+    private void CalculateNewValue(Dictionary<ImpactChoices, int> dict, int scaler)
     {
-        Debug.Log("exitUI");
+        player1Stats.Value1 = player1Stats.Value1 + (dict[ImpactChoices.climate] * scaler);
+        player1Stats.Value2 = player1Stats.Value2 + (dict[ImpactChoices.economy] * scaler);
     }
+    private void CalculateTempValue(Dictionary<ImpactChoices, int> dict, bool scaler)
+    {
+        int tempValue1 = 0;
+        int tempValue2 = 0;
+        
+        int previousValue1 = player1Stats.Value1;
+        int previousValue2 = player1Stats.Value2;
+
+
+
+        if (scaler == true)
+        {
+            tempValue1 = previousValue1 + dict[ImpactChoices.climate];
+            tempValue2 = previousValue2 + dict[ImpactChoices.economy];
+        }
+        else
+        {
+            tempValue1 = previousValue1;
+            tempValue2 = previousValue1;
+        }
+
+        UpdateTempUI(tempValue1, tempValue2);
+    }
+
 }

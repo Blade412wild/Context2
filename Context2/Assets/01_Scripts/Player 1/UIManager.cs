@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("SCRIPTS")]
+    [SerializeField] private Chooser chooserScript;
+    [SerializeField] private Stats player1Stats;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //[Header("UI Elements")]
+
+
+
 }
