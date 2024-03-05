@@ -9,13 +9,3 @@ public class Dictonarytest : MonoBehaviour
     private NewDictItem[] thisDictItems;
 
 }
-
-//[Serializable]
-//public class NewDictItem
-//{
-//    [SerializeField]
-//    string name;
-
-//    [SerializeField]
-//    Transform transform;
-//}
