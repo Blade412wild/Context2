@@ -29,7 +29,6 @@ public class TimerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timersList.Count);
         foreach (Timer timer in timersList)
         {
             timer.OnUpdate();

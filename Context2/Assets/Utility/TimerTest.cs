@@ -19,5 +19,15 @@ public class TimerTest : MonoBehaviour
         {
             TimerManager.Instance.AddTimerToList(new Timer(5));
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            TimerManager.Instance.AddTimerToList(new Timer(5, true, 3));
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            TimerManager.Instance.AddTimerToList(new Timer(2, true));
+        }
     }
 }
