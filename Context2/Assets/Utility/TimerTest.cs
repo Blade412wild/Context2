@@ -1,10 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TimerTest : MonoBehaviour
 {
-    [SerializeField] private KeyCode KeyInput;
+
+    [SerializeField] private KeyCode keyInput;
+    [SerializeField] private CustomTimer TimerSettings;
+    [SerializeField] private int timerDuration;
+    private Timer dayTimer;
+    
+    
+
+    
+
+    [Header(" UI COMPONETS")]
+    [SerializeField] private TextMeshProUGUI TimerText;
 
     // Start is called before the first frame update
     void Start()
@@ -15,19 +27,24 @@ public class TimerTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyInput))
+        if (Input.GetKeyDown(keyInput))
         {
-            TimerManager.Instance.AddTimerToList(new Timer(5));
+            TimerManager.Instance.AddTimerToList(dayTimer = new Timer(timerDuration));
         }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            TimerManager.Instance.AddTimerToList(new Timer(5, true, 3));
+            TimerManager.Instance.AddTimerToList(new Timer(timerDuration, true, 3));
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            TimerManager.Instance.AddTimerToList(new Timer(2, true));
+            TimerManager.Instance.AddTimerToList(new Timer(timerDuration, true));
+        }
+
+        if(dayTimer != null)
+        {
+            TimerText.text = "Time Left : " + dayTimer.ShowTime().ToString();
         }
     }
 }
