@@ -8,7 +8,7 @@ public class ScooterController : MonoBehaviour
     [SerializeField] float steeringSpeed = 10;
     [SerializeField] float gravityForce = 10;
     [SerializeField] Transform groundCheck;
-    [SerializeField] LayerMask playerLayer;
+    [SerializeField] LayerMask groundLayer;
     [SerializeField] float groundDistance = 0.4f;
 
     [SerializeField] Transform steeringPoint;
@@ -120,7 +120,7 @@ public class ScooterController : MonoBehaviour
 
     void CrashCheck()
     {
-        if (Physics.CheckSphere(crashCollider.position, 0.4f, ~playerLayer))
+        if (Physics.CheckSphere(crashCollider.position, 0.4f, groundLayer))
         {
             Crash();
         }
@@ -146,6 +146,6 @@ public class ScooterController : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.CheckSphere(groundCheck.position, groundDistance, ~playerLayer);
+        return Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
     }
 }

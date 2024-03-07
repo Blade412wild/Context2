@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5100141854041134807}
   m_Layer: 6
   m_Name: Player Scooter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -499,7 +499,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4747800079362390981}
-  m_Material: {fileID: 13400000, guid: c9e51c86436c82841b601d0b9b606972, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -539,9 +539,9 @@ MonoBehaviour:
   steeringSpeed: 70
   gravityForce: 10
   groundCheck: {fileID: 4747800078354965649}
-  playerLayer:
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   groundDistance: 0.4
   steeringPoint: {fileID: 4747800077828772373}
   maxVelocity: 30
@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: 4747800079416778511}
   - component: {fileID: 4747800079416778510}
   - component: {fileID: 4747800079416778509}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Minimap Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4747800079416778504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 113.6, z: 0}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1.6983, y: 1.6983, z: 1.6983}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -615,7 +615,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c73672365454eed4ea445035026ed68b, type: 2}
+  - {fileID: 2100000, guid: afb0cf45759d36a48ab9d022f9870158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
