@@ -8,10 +8,6 @@ public class TimerTest : MonoBehaviour
 
     [SerializeField] private KeyCode keyInput;
     [SerializeField] private CustomTimer timer;
-    [SerializeField] private int timerDuration;
-
-
-
 
     [Header(" UI COMPONETS")]
     [SerializeField] private TextMeshProUGUI TimerText;
@@ -33,12 +29,12 @@ public class TimerTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            TimerManager.Instance.AddTimerToList(new Timer(timerDuration, true, 3));
+            //TimerManager.Instance.AddTimerToList(new Timer(timerDuration, true, 3));
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            TimerManager.Instance.AddTimerToList(new Timer(timerDuration, true));
+            //TimerManager.Instance.AddTimerToList(new Timer(timerDuration, true));
         }
 
         if (timer.timerInstance != null)

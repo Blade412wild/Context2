@@ -15,7 +15,7 @@ public class Timer
 
     // timer 
     private float startTime;
-    private float currentTime;
+    private float currentTime = 0;
     private int endTime = 0;
     private bool repeat = false;
     private int repeatAmount = 0;
