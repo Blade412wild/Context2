@@ -7,13 +7,11 @@ public class TimerTest : MonoBehaviour
 {
 
     [SerializeField] private KeyCode keyInput;
-    [SerializeField] private CustomTimer TimerSettings;
+    [SerializeField] private CustomTimer timer;
     [SerializeField] private int timerDuration;
-    private Timer dayTimer;
-    
-    
 
-    
+
+
 
     [Header(" UI COMPONETS")]
     [SerializeField] private TextMeshProUGUI TimerText;
@@ -21,7 +19,7 @@ public class TimerTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,7 +27,8 @@ public class TimerTest : MonoBehaviour
     {
         if (Input.GetKeyDown(keyInput))
         {
-            TimerManager.Instance.AddTimerToList(dayTimer = new Timer(timerDuration));
+            timer.StartTimer();
+            //TimerManager.Instance.AddTimerToList(dayTimer = new Timer(timerDuration));
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -42,9 +41,11 @@ public class TimerTest : MonoBehaviour
             TimerManager.Instance.AddTimerToList(new Timer(timerDuration, true));
         }
 
-        if(dayTimer != null)
+        if (timer.timerInstance != null)
         {
-            TimerText.text = "Time Left : " + dayTimer.ShowTime().ToString();
+            Debug.Log(timer.timerInstance);
+            TimerText.text = "Time Left : " + timer.ShowTime().ToString();
+            Debug.Log(timer.ShowTime().ToString());
         }
     }
 }

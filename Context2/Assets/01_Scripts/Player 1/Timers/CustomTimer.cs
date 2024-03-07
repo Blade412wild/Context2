@@ -10,16 +10,23 @@ using UnityEngine;
 public class CustomTimer : ScriptableObject
 {
     [Header("TimerSettings")]
-    [SerializeField] private float timerDuration;
-    [SerializeField] private bool repeat;
-    [SerializeField] private int repeatAmount;
-    [SerializeField] private bool giveTimeBack;
+    public float timerDuration;
+    public bool repeat;
+    public int repeatAmount;
+    public bool giveTimeBack;
+
+    public Timer timerInstance {get; set;}
 
     [SerializeField] private event Action hallo;
 
     public void StartTimer()
     {
-        //TimerManager.Instance.AddTimerToList(new Timer());
+        TimerManager.Instance.AddTimerToList(timerInstance = new Timer(this));
+    }
+
+    public int ShowTime()
+    {
+        return timerInstance.ShowTime();
     }
 
 

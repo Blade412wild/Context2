@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyInput: 32
-  TimerSettings: {fileID: 11400000, guid: 2d1a1a2e6789283438de7eebc1433cde, type: 2}
+  timer: {fileID: 11400000, guid: 2d1a1a2e6789283438de7eebc1433cde, type: 2}
   timerDuration: 6
   TimerText: {fileID: 1566548817}
 --- !u!4 &232659350

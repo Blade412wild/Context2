@@ -22,10 +22,13 @@ public class Timer
     private int currentAmount = 1;
     private bool giveTImeBack = false;
 
-    public Timer(int _seconds)
+    public Timer(CustomTimer _customTimer)
     {
-        startTime = _seconds;
+        startTime = _customTimer.timerDuration;
         currentTime = startTime;
+        repeat = _customTimer.repeat;
+        repeatAmount = _customTimer.repeatAmount;
+        giveTImeBack = _customTimer.giveTimeBack;
     }
 
     public Timer(int _seconds, bool _repeat)
