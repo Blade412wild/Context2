@@ -44,6 +44,7 @@ public class TimerManager : MonoBehaviour
 
     }
 
+    
     public void RemoveTimerFromList(Timer _timer)
     {
         Debug.Log(" removed timer from list");

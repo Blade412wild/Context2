@@ -39,9 +39,9 @@ public class TimerTest : MonoBehaviour
 
         if (timer.timerInstance != null)
         {
-            Debug.Log(timer.timerInstance);
+            //Debug.Log(timer.timerInstance);
             TimerText.text = "Time Left : " + timer.ShowTime().ToString();
-            Debug.Log(timer.ShowTime().ToString());
+            //Debug.Log(timer.ShowTime().ToString());
         }
     }
 }
