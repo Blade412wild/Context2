@@ -3,24 +3,6 @@ using UnityEngine;
 
 namespace Joris
 {
-    [Serializable]
-    public class LayoutTexture
-    {
-        [SerializeField] private LevelTexture _tileMap;
-
-        public Vector2Int GetTextureSize()
-        {
-            return _tileMap.GetTextureSize();
-        }
-
-        public TileData GetTileData(Vector2Int gridPos)
-        {
-            var pixelColor = _tileMap.GetPixelColor(gridPos.x, gridPos.y);
-            var variationData = _tileMap.GetTileData(pixelColor);
-            return variationData;
-        }
-    }
-
     [CreateAssetMenu(fileName = "Texture -", menuName = "Level/Texture")]
     public class LevelTexture : ScriptableObject
     {
@@ -32,17 +14,29 @@ namespace Joris
             return new Vector2Int(_colorMap.width, _colorMap.height);
         }
 
-        public TileData GetTileData(Color colorCode)
+        public int GetTileSetVariationAmount()
         {
-            if (_tileSet.TileVariations.TryGetValue(colorCode, out var tileData))
-                return tileData;
+            return _tileSet.TileVariations.Count;
+        }
+
+        public Material[] GetTileSetVariationMaterial(int index)
+        {
+            var key = _tileSet.keyIndex[index];
+
+            if (_tileSet.TileVariations.TryGetValue(key, out var tileData))
+                return tileData.Model.GetComponent<MeshRenderer>().sharedMaterials;
 
             throw new Exception("VariationData could not be extracted from dictionary");
         }
 
-        public Color GetPixelColor(int x, int y)
+        public TileData GetTileData(Vector2Int pixelPos)
         {
-            return _colorMap.GetPixel(x, y);
+            var colorCode = _colorMap.GetPixel(pixelPos.x, pixelPos.y);
+
+            if (_tileSet.TileVariations.TryGetValue(colorCode, out var tileData))
+                return tileData;
+
+            throw new Exception("VariationData could not be extracted from dictionary");
         }
     }
 }
