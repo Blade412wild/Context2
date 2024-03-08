@@ -8,12 +8,33 @@ namespace Joris
     public class LevelTileSet : ScriptableObject
     {
         public TileSetDictionary TileVariations;
+
+        [HideInInspector]
+        public List<Color> keyIndex;
+
+        private void OnValidate()
+        {
+            keyIndex = new List<Color>();
+
+            var id = 0;
+
+            foreach(var tileset in TileVariations)
+            {
+                keyIndex.Add(tileset.Key);
+                tileset.Value.MeshID = id;
+                id++;
+            }
+        }
     }
 
     [Serializable]
-    public struct TileData
+    public class TileData
     {
+        [HideInInspector]
+        public int MeshID;
+
         public GameObject Model;
+        public float GroundOffset;
     }
 
     [Serializable]
