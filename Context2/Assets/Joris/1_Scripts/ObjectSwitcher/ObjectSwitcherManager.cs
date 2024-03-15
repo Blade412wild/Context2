@@ -20,26 +20,26 @@ public class ObjectSwitcherManager : PersistentSingleton<ObjectSwitcherManager>
         }
     }
 
-    public void ActivateNearestAvaiableType(NavMeshAgent agent, Vector3 agentPos, Vector3 targetPos, ObjectSwitchType objType)
+    public void ActivateNearestAvaiableType(ObjectSwitchType objType, NavMeshAgent agent, Vector3 agentPos, Vector3 targetPos)
     {
         // Store all found objTypes in array
-        var nTypes = _objectSwitchTracers.OrderBy(t => t.SwitchType.Equals(objType)).ToArray();
+        var nearestTypes = _objectSwitchTracers.OrderBy(t => t.SwitchType.Equals(objType)).ToArray();
 
         // Filter that array into one with only deactivated objTypes,
         // then order by distance from the player
-        var naTypes = nTypes.OrderBy(t => t.GetState().Equals(false))
+        var nearestAvailableTypes = nearestTypes.OrderBy(t => t.GetState().Equals(false))
             .OrderBy(t => (t.Position - agentPos).sqrMagnitude).ToArray();
 
-        // Loop from furthers to closest checking if destination can still be reached with roadblock enabled, if yes, activate it
-        for (int i = 0; i > naTypes.Length; i--)
+        // Checking if destination can still be reached with roadblock enabled, if yes, activate it
+        foreach (var type in nearestAvailableTypes)
         {
-            naTypes[i].ActivateNavMeshObstacle();
+            type.ActivateNavMeshObstacle();
 
             if (!HasPath(agent, targetPos))
-                naTypes[i].DeactivateNavMeshObstacle();
+                type.DeactivateNavMeshObstacle();
             else
             {
-                naTypes[i].Activate();
+                type.Activate();
                 break;
             }
         }

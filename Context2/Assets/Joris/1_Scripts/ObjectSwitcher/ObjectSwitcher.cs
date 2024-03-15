@@ -18,6 +18,8 @@ public class ObjectSwitcher : MonoBehaviour, IObjectSwitch
             if (obj.activeInHierarchy)
                 obj.SetActive(false);
         }
+
+        _navMeshBlock.SetActive(false);
     }
 
     bool IObjectSwitch.GetState()
