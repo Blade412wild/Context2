@@ -3,10 +3,13 @@ using UnityEngine;
 public class ObjectSwitcher : MonoBehaviour, IObjectSwitch
 {
     [SerializeField]
-    private GameObject[] _objects;
+    private ObjectSwitchType _switchType;
 
     [SerializeField]
-    private ObjectSwitchType _switchType;
+    private GameObject _navMeshBlock;
+
+    [SerializeField]
+    private GameObject[] _objects;
 
     public void Awake()
     {
@@ -17,38 +20,31 @@ public class ObjectSwitcher : MonoBehaviour, IObjectSwitch
         }
     }
 
-    public void Activate()
+    bool IObjectSwitch.GetState()
+    {
+        foreach (GameObject obj in _objects)
+            if (obj.activeInHierarchy == true)
+                return true;
+
+        return false;
+    }
+
+    void IObjectSwitch.Activate()
     {
         foreach (GameObject obj in _objects)
             obj.SetActive(true);
     }
 
-    public void Deactivate()
+    void IObjectSwitch.Deactivate()
     {
         foreach (GameObject obj in _objects)
             obj.SetActive(false);
     }
 
-    public Vector3 GetPosition()
-    {
-        return transform.position;
-    }
+    Vector3 IObjectSwitch.Position => transform.position;
+    ObjectSwitchType IObjectSwitch.SwitchType => _switchType;
 
-    public bool GetState()
-    {
-        bool state = false;
+    void IObjectSwitch.ActivateNavMeshObstacle() => _navMeshBlock.SetActive(true);
 
-        foreach (GameObject obj in _objects)
-        {
-            if (obj.activeInHierarchy)
-                state = true;
-        }
-
-        return state;
-    }
-
-    public ObjectSwitchType GetSwitchType()
-    {
-        return _switchType;
-    }
+    void IObjectSwitch.DeactivateNavMeshObstacle() => _navMeshBlock.SetActive(false);
 }

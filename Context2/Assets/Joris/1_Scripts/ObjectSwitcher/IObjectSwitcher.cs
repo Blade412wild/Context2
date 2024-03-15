@@ -2,10 +2,14 @@ using UnityEngine;
 
 public interface IObjectSwitch
 {
+    ObjectSwitchType SwitchType { get; }
+    Vector3 Position { get ; }
+
     bool GetState();
+
     void Activate();
     void Deactivate();
 
-    Vector3 GetPosition();
-    ObjectSwitchType GetSwitchType();
+    void ActivateNavMeshObstacle();
+    void DeactivateNavMeshObstacle();
 }

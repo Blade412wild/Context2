@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class ObjectSwitcherManager : PersistentSingleton<ObjectSwitcherManager>
@@ -17,16 +18,40 @@ public class ObjectSwitcherManager : PersistentSingleton<ObjectSwitcherManager>
 
             return new List<IObjectSwitch>(dataPersistanceObjects);
         }
-
-        Debug.Log(GetClosestInstance(transform.position, ObjectSwitchType.RoadBlock));
     }
 
-    public IObjectSwitch GetClosestInstance(Vector3 referencePos, ObjectSwitchType objType)
+    public void ActivateNearestAvaiableType(NavMeshAgent agent, Vector3 agentPos, Vector3 targetPos, ObjectSwitchType objType)
     {
-        var nType = _objectSwitchTracers.OrderBy(t => t.GetSwitchType().Equals(objType)).ToArray();
-        var naType = nType.OrderBy(t => t.GetState().Equals(false)).ToArray();
-        var naTypePos = nType.OrderBy(t => (t.GetPosition() - referencePos).sqrMagnitude).Take(3).ToArray();
+        // Store all found objTypes in array
+        var nTypes = _objectSwitchTracers.OrderBy(t => t.SwitchType.Equals(objType)).ToArray();
 
-        return naTypePos[^1];
+        // Filter that array into one with only deactivated objTypes,
+        // then order by distance from the player
+        var naTypes = nTypes.OrderBy(t => t.GetState().Equals(false))
+            .OrderBy(t => (t.Position - agentPos).sqrMagnitude).ToArray();
+
+        // Loop from furthers to closest checking if destination can still be reached with roadblock enabled, if yes, activate it
+        for (int i = 0; i > naTypes.Length; i--)
+        {
+            naTypes[i].ActivateNavMeshObstacle();
+
+            if (!HasPath(agent, targetPos))
+                naTypes[i].DeactivateNavMeshObstacle();
+            else
+            {
+                naTypes[i].Activate();
+                break;
+            }
+        }
+    }
+
+    bool HasPath(NavMeshAgent agent, Vector3 targetPos)
+    {
+        var path = new NavMeshPath();
+
+        if (agent.CalculatePath(targetPos, path) && path.status == NavMeshPathStatus.PathComplete)
+            return true;
+
+        return false;
     }
 }
