@@ -16,10 +16,7 @@ public class CustomTimer : ScriptableObject
     public bool giveTimeBack;
 
     public Timer timerInstance {get; set;}
-
-    [SerializeField] private event Action hallo;
-
-    public void StartTimer()
+    public void CreateTimer()
     {
         TimerManager.Instance.AddTimerToList(timerInstance = new Timer(this));
     }

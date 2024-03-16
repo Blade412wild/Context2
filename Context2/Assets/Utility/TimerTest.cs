@@ -23,7 +23,7 @@ public class TimerTest : MonoBehaviour
     {
         if (Input.GetKeyDown(keyInput))
         {
-            timer.StartTimer();
+            timer.CreateTimer();
             //TimerManager.Instance.AddTimerToList(dayTimer = new Timer(timerDuration));
         }
 

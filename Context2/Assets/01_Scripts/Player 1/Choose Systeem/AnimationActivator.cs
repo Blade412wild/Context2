@@ -18,11 +18,9 @@ public class AnimationActivator : MonoBehaviour
     }
     private void SetAnimationBoolTrue(Animator _animator)
     {
-        Debug.Log(" set bool");
         if (animator == _animator)
         {
             eventAnimator = _animator;
-            Debug.Log(_animator);
             animator.SetBool("IsHovering", true);
         }
     }

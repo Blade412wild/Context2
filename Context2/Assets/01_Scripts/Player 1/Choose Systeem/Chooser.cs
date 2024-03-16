@@ -17,6 +17,9 @@ public class Chooser : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Value1;
     [SerializeField] private TextMeshProUGUI Value2;
 
+    [Header("Timers")]
+    [SerializeField] private CustomTimer customTimer;
+
     private Dictionary<ImpactChoices, int> currentChoiceDict;
 
 
