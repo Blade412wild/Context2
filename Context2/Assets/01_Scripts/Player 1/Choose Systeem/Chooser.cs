@@ -78,8 +78,8 @@ public class Chooser : MonoBehaviour
 
     private void CalculateNewValue(Dictionary<ImpactChoices, int> dict, int scaler)
     {
-        player1Stats.Value1 = player1Stats.Value1 + (dict[ImpactChoices.climate] * scaler);
-        player1Stats.Value2 = player1Stats.Value2 + (dict[ImpactChoices.economy] * scaler);
+        player1Stats.Value1 = player1Stats.Value1 + (dict[ImpactChoices.Yes] * scaler);
+        player1Stats.Value2 = player1Stats.Value2 + (dict[ImpactChoices.No] * scaler);
     }
     private void CalculateTempValue(Dictionary<ImpactChoices, int> dict, bool scaler)
     {
@@ -93,8 +93,8 @@ public class Chooser : MonoBehaviour
 
         if (scaler == true)
         {
-            tempValue1 = previousValue1 + dict[ImpactChoices.climate];
-            tempValue2 = previousValue2 + dict[ImpactChoices.economy];
+            tempValue1 = previousValue1 + dict[ImpactChoices.Yes];
+            tempValue2 = previousValue2 + dict[ImpactChoices.No];
         }
         else
         {

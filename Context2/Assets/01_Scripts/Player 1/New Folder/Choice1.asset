@@ -15,7 +15,7 @@ MonoBehaviour:
   ChoiceText: Gaat u vandaag met de fiets naar school?
   ChoiceImpactDict:
     thisDictItems:
-    - typeImpact: 0
-      Impact: 100
     - typeImpact: 1
+      Impact: 0
+    - typeImpact: 0
       Impact: 0

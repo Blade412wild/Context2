@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ImpactChoices {climate, economy};
+public enum ImpactChoices {Yes, No};
 
 [CreateAssetMenu(fileName = "ChoiceData", menuName = "ScriptableObjects/Choices", order = 1)]
 public class Choices : ScriptableObject

@@ -36,11 +36,10 @@ public class ChooserManager : MonoBehaviour
         ChoiceObject.OnChoiceMade += NextChoice;
         Timer.OnTimerIsDone += UpdateUI;
         currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
-        //UpdateUI();
-        Debug.Log(choiceCounter);
-        //WaiForAnimation();
+        UpdateUI();
+        Debug.Log(AllChoices[choiceCounter].name);
         dayTimer.CreateTimer();
-        
+
     }
 
     private void Update()
@@ -50,14 +49,13 @@ public class ChooserManager : MonoBehaviour
 
     public void NextChoice(ChoiceObject.ChoiceImpact _madeChoice)
     {
+        PlayChoiceConsequenceEvent(_madeChoice);
         WaitForAnimation();
-
-        Debug.Log(choiceCounter);
-        if (choiceCounter < AllChoices.Length -1)
+        if (choiceCounter < AllChoices.Length - 1)
         {
             currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
             choiceCounter++;
-            //UpdateUI();
+            Debug.Log(AllChoices[choiceCounter].name);
         }
         else
         {
@@ -76,9 +74,21 @@ public class ChooserManager : MonoBehaviour
 
     private void WaitForAnimation()
     {
-        OnPlayAnimation?.Invoke(); 
+        OnPlayAnimation?.Invoke();
         textUi.SetActive(false);
         animationTimer.CreateTimer();
+    }
+
+    private void PlayChoiceConsequenceEvent(ChoiceObject.ChoiceImpact _madeChoice)
+    {
+        if (_madeChoice == ChoiceObject.ChoiceImpact.Yes)
+        {
+            Debug.Log(" play " + _madeChoice + " event from choice : " + AllChoices[choiceCounter].name);
+        }
+        else
+        {
+            Debug.Log(" play " + _madeChoice + " event from choice : " + AllChoices[choiceCounter].name);
+        }
     }
 
 

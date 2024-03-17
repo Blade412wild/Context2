@@ -101,7 +101,6 @@ public class MouseDetection : MonoBehaviour
     }
     private void CheckMouseClick()
     {
-        Debug.Log("Check mouse click");
         if (hovering == true && choiceObject != null)
         {
             OnMouseClick?.Invoke(choiceObject);
