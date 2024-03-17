@@ -10,7 +10,7 @@ using UnityEngine;
 [Serializable]
 public class Timer
 {
-    public event Action OnTimerIsDone;
+    public static event Action OnTimerIsDone;
     public event Action<Timer> OnRemoveTimer;
 
     // timer 
@@ -70,6 +70,7 @@ public class Timer
             }
             else
             {
+                OnTimerIsDone?.Invoke();
                 OnRemoveTimer?.Invoke(this);
             }
         }

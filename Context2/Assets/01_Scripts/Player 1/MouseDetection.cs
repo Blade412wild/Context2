@@ -9,7 +9,7 @@ public class MouseDetection : MonoBehaviour
     // events
     public static event Action<Animator> OnMouseHoveringEnter;
     public static event Action OnMouseHoveringExit;
-    public event Action OnMouseClick;
+    public static event Action<ChoiceObject> OnMouseClick;
 
     //animation Variables
     private Vector3 previousMousePos;
@@ -19,16 +19,19 @@ public class MouseDetection : MonoBehaviour
     // choice Variables
     private bool hovering = false;
     private ChoiceObject choiceObject = null;
+    private bool inputBlock = false;
 
     private void Start()
     {
-        OnMouseClick += CheckMouseClick;
+        Timer.OnTimerIsDone += SetInputBlockFalse;
+        ChooserManager.OnPlayAnimation += SetInputBlockTrue;
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("  mouse clicked");
+            if (inputBlock == true) return;
             CheckMouseClick();
         }
     }
@@ -98,10 +101,18 @@ public class MouseDetection : MonoBehaviour
     }
     private void CheckMouseClick()
     {
-        Debug.Log("Hovering : " + hovering + " | choiceObject : " + choiceObject);
+        Debug.Log("Check mouse click");
         if (hovering == true && choiceObject != null)
         {
-            Debug.Log(" Check mouse click");
+            OnMouseClick?.Invoke(choiceObject);
         }
+    }
+    private void SetInputBlockTrue()
+    {
+        inputBlock = true;
+    }
+    private void SetInputBlockFalse()
+    {
+        inputBlock = false;
     }
 }

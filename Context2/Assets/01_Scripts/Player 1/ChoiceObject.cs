@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class ChoiceObject : MonoBehaviour
 {
-    public event Action<ChoiceImpact> OnChoiceMade;
-    public enum ChoiceImpact {Yes, No};
+    public static event Action<ChoiceImpact> OnChoiceMade;
+    public enum ChoiceImpact { Yes, No };
 
     public ChoiceImpact choice;
 
@@ -15,12 +15,15 @@ public class ChoiceObject : MonoBehaviour
 
     private void Start()
     {
-        
+        MouseDetection.OnMouseClick += MadeChoice;
     }
 
-    private void MadeChoice()
+    private void MadeChoice(ChoiceObject _choiceObject)
     {
-        OnChoiceMade?.Invoke(choice);
+        if (_choiceObject == this)
+        {
+            OnChoiceMade?.Invoke(choice);
+        }
     }
 
 

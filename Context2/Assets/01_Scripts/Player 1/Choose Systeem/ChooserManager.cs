@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
-public class Chooser2 : MonoBehaviour
+public class ChooserManager : MonoBehaviour
 {
-    int choiceCounter = 0;
+    public static event Action OnPlayAnimation;
+
+    private int choiceCounter = 0;
+    private int previousChoiceCounter;
 
     [SerializeField] private Choices[] AllChoices;
 
@@ -25,20 +29,24 @@ public class Chooser2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ChoiceObject.OnChoiceMade += NextChoice;
+        Timer.OnTimerIsDone += UpdateUI;
         currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
+        //UpdateUI();
         Debug.Log(choiceCounter);
-        WaiForAnimation();
+        //WaiForAnimation();
     }
 
-    public void NextChoice()
+    public void NextChoice(ChoiceObject.ChoiceImpact _madeChoice)
     {
-        Debug.Log(choiceCounter);
+        WaitForAnimation();
 
-        if (choiceCounter < AllChoices.Length)
+        Debug.Log(choiceCounter);
+        if (choiceCounter < AllChoices.Length -1)
         {
             currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
             choiceCounter++;
-            UpdateUI();
+            //UpdateUI();
         }
         else
         {
@@ -55,12 +63,14 @@ public class Chooser2 : MonoBehaviour
         }
     }
 
-    private void WaiForAnimation()
+    private void WaitForAnimation()
     {
+        OnPlayAnimation?.Invoke(); 
         textUi.SetActive(false);
         animationTimer.CreateTimer();
-        animationTimer.timerInstance.OnTimerIsDone += UpdateUI;
     }
+
+
 
 
 
