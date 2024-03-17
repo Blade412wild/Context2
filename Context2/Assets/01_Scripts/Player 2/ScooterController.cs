@@ -6,6 +6,8 @@ public class ScooterController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 10;
     [SerializeField] float steeringSpeed = 10;
+    [SerializeField] float driftingMultiplier = 1.5f;
+    [SerializeField] float driftingVelocityLoss = 5;
     [SerializeField] float gravityForce = 10;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
@@ -20,10 +22,15 @@ public class ScooterController : MonoBehaviour
 
     [SerializeField] KeyCode gasInput = KeyCode.Mouse0;
     [SerializeField] KeyCode reverseInput = KeyCode.Mouse1;
+    [SerializeField] KeyCode driftingInput = KeyCode.LeftShift;
 
     public float currentVelocity;
+    public float steeringDirection;
     public bool isGassing;
     public bool isReversing;
+    public bool isDrifting;
+
+    float appliedSteeringSpeed;
 
     Vector3 velocity;
 
@@ -35,6 +42,8 @@ public class ScooterController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        appliedSteeringSpeed = steeringSpeed;
     }
 
     // Update is called once per frame
@@ -50,12 +59,22 @@ public class ScooterController : MonoBehaviour
         {
             Gas();
             isGassing = true;
+
+            if (Input.GetKey(reverseInput))
+            {
+                isDrifting = true;
+            }
+            else
+            {
+                isDrifting = false;
+            }
         }
         else
         {
             isGassing = false;
+            isDrifting = false;
         }
-        if (Input.GetKey(reverseInput))
+        if (Input.GetKey(reverseInput) && !isDrifting)
         {
             Reverse();
             isReversing = true;
@@ -85,8 +104,26 @@ public class ScooterController : MonoBehaviour
 
     void Steering()
     {
+        steeringDirection = Input.GetAxis("Horizontal");
+
         //transform.Rotate(transform.rotation.x, steeringSpeed * Input.GetAxis("Horizontal"), transform.rotation.z);
-        transform.RotateAround(steeringPoint.position, Vector3.up, steeringSpeed * Input.GetAxis("Horizontal") * Time.deltaTime);
+        transform.RotateAround(steeringPoint.position, Vector3.up, appliedSteeringSpeed * steeringDirection * Time.deltaTime);
+
+        // Drifting
+        if (currentVelocity > 0 && Input.GetKey(driftingInput))
+        {
+            isDrifting = true;
+            appliedSteeringSpeed = steeringSpeed * driftingMultiplier;
+        }
+        else
+        {
+            isDrifting = false;
+            appliedSteeringSpeed = steeringSpeed;
+        }
+        if (isDrifting && currentVelocity > 0)
+        {
+            currentVelocity -= Time.deltaTime * driftingVelocityLoss;
+        }
     }
 
     void ApplyMovement()
@@ -147,5 +184,12 @@ public class ScooterController : MonoBehaviour
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(groundCheck.position, groundDistance);
+        Gizmos.DrawSphere(crashCollider.position, 0.4f);
     }
 }
