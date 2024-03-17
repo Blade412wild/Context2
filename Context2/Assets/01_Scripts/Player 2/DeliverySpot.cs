@@ -6,29 +6,36 @@ public class DeliverySpot : MonoBehaviour
 {
     [SerializeField] GameObject indicator;
 
-    DeliveryManager deliveryManager;
+    public DeliveryManager DeliveryManager;
 
     bool delivered;
+
+    [Space]
+    [Header("Timer")]
+    public float passedTime;
 
     // Start is called before the first frame update
     void Awake()
     {
-        deliveryManager = FindObjectOfType<DeliveryManager>();
-
-        deliveryManager.ChangeTotalDeliveries(1);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        IncreaseTimer();
     }
 
     void PlayerCollision()
     {
         delivered = true;
-        deliveryManager.AddDeliveries(1);
+        DeliveryManager.Delivered();
         indicator.SetActive(false);
+    }
+
+    void IncreaseTimer()
+    {
+        passedTime += Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider other)
