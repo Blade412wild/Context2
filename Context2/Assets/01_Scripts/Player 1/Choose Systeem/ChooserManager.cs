@@ -15,9 +15,13 @@ public class ChooserManager : MonoBehaviour
 
     [Header(" UI COMPONETS")]
     [SerializeField] private TextMeshProUGUI ChoiceText;
+    [SerializeField] private TextMeshProUGUI TimerText;
+
 
     [Header("Timers")]
     [SerializeField] private CustomTimer animationTimer;
+    [SerializeField] private CustomTimer dayTimer;
+
 
     [Header("GameObjects")]
     [SerializeField] private GameObject textUi;
@@ -35,6 +39,13 @@ public class ChooserManager : MonoBehaviour
         //UpdateUI();
         Debug.Log(choiceCounter);
         //WaiForAnimation();
+        dayTimer.CreateTimer();
+        
+    }
+
+    private void Update()
+    {
+        TimerText.text = "Time before shitft ends : " + dayTimer.ShowTime();
     }
 
     public void NextChoice(ChoiceObject.ChoiceImpact _madeChoice)

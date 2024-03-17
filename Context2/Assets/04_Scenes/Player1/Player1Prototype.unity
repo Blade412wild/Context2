@@ -132,36 +132,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 38728077}
-  - component: {fileID: 38728076}
   - component: {fileID: 38728078}
   m_Layer: 0
-  m_Name: Chooser
+  m_Name: ChooserManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &38728076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38728075}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0797d7d06f60d584f9b0886ff068184c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AllChoices:
-  - {fileID: 11400000, guid: d13a2307e1112284586691e75e5fe9bb, type: 2}
-  - {fileID: 11400000, guid: 0f3e779d76c5b7e45aa0364cd8a40d0d, type: 2}
-  - {fileID: 11400000, guid: 479358baa8afc7e4c889eb394bb9f297, type: 2}
-  player1Stats: {fileID: 0}
-  ChoiceText: {fileID: 1576062956}
-  Value1: {fileID: 130796637}
-  Value2: {fileID: 492824724}
-  customTimer: {fileID: 0}
 --- !u!4 &38728077
 Transform:
   m_ObjectHideFlags: 0
@@ -194,7 +172,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f3e779d76c5b7e45aa0364cd8a40d0d, type: 2}
   - {fileID: 11400000, guid: 479358baa8afc7e4c889eb394bb9f297, type: 2}
   ChoiceText: {fileID: 1576062956}
+  TimerText: {fileID: 1566548817}
   animationTimer: {fileID: 11400000, guid: 59cefb154c7daed48bdaccd1a0c1f614, type: 2}
+  dayTimer: {fileID: 11400000, guid: 2d1a1a2e6789283438de7eebc1433cde, type: 2}
   textUi: {fileID: 1096502918}
 --- !u!1 &78188395
 GameObject:
@@ -281,7 +261,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 38728076}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Chooser, Assembly-CSharp
         m_MethodName: NextChoice
         m_Mode: 1
@@ -348,7 +328,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 38728076}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Chooser, Assembly-CSharp
           m_MethodName: onUIEnter
           m_Mode: 1
@@ -364,7 +344,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 38728076}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Chooser, Assembly-CSharp
           m_MethodName: onUIExit
           m_Mode: 1
@@ -2045,7 +2025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 38728076}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Chooser, Assembly-CSharp
         m_MethodName: NextChoice
         m_Mode: 1
@@ -2297,7 +2277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time left : 0'
+  m_text: 'Time before shitft ends : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2391,8 +2371,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 745.8806, y: 481.76007}
-  m_SizeDelta: {x: 294.2387, y: 47.5201}
+  m_AnchoredPosition: {x: 611.8772, y: 481.76007}
+  m_SizeDelta: {x: 562.2456, y: 47.5201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1576062954
 GameObject:
@@ -2710,8 +2690,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -22}
-  m_SizeDelta: {x: 1141.1461, y: 250.99138}
+  m_AnchoredPosition: {x: -55, y: -72}
+  m_SizeDelta: {x: 767.0565, y: 419.5952}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695910142
 MonoBehaviour:
