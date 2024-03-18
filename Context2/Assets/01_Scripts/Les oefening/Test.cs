@@ -6,29 +6,25 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Test : MonoBehaviour
 {
+    public GameEvent gameEvent;
+
     // Start is called before the first frame update
     void Start()
     {
-        object instance = System.Activator.CreateInstance(typeof(ExampleClass));
-         
-
-        ExampleClass b = new ExampleClass();
-        foreach (MethodInfo a in typeof(ExampleClass).GetMethods(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly))
-        {
-            if (a.GetParameters().Length == 0)
-            {
-                Debug.Log(a.Name);
-                string secret = (string)a.Invoke(b, null);
-                Debug.Log(secret);
-                
-
-            }
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(" try to play event");
+            gameEvent?.Invoke();
+        }
+    }
 
+    public void EventsTest()
+    {
+        Debug.Log("event plays");
     }
 }

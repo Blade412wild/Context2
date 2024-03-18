@@ -12,6 +12,7 @@ public class Choices : ScriptableObject
 
     [Header("Choices Impact")]
     public NewDict ChoiceImpactDict = new NewDict();
+
 }
 
 
@@ -21,9 +22,9 @@ public class NewDict
     [SerializeField]
     private NewDictItem[] thisDictItems;
 
-    public Dictionary<ImpactChoices, int> ToDictionary()
+    public Dictionary<ImpactChoices, GameEvent> ToDictionary()
     {
-        Dictionary<ImpactChoices, int> newDict = new Dictionary<ImpactChoices, int>();
+        Dictionary<ImpactChoices, GameEvent> newDict = new Dictionary<ImpactChoices, GameEvent>();
 
         foreach(var item in thisDictItems)
         {
@@ -41,6 +42,6 @@ public class NewDictItem
     public ImpactChoices typeImpact;
 
     [SerializeField]
-    public int Impact;
+    public GameEvent Impact;
 }
 

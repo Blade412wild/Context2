@@ -27,7 +27,7 @@ public class ChooserManager : MonoBehaviour
     [SerializeField] private GameObject textUi;
 
 
-    private Dictionary<ImpactChoices, int> currentChoiceDict;
+    private Dictionary<ImpactChoices, GameEvent> currentChoiceDict;
 
 
     // Start is called before the first frame update
@@ -83,11 +83,14 @@ public class ChooserManager : MonoBehaviour
     {
         if (_madeChoice == ChoiceObject.ChoiceImpact.Yes)
         {
-            Debug.Log(" play " + _madeChoice + " event from choice : " + AllChoices[choiceCounter].name);
+            GameEvent choiceEvent = currentChoiceDict[ImpactChoices.Yes];
+            Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
+            choiceEvent?.Invoke();
         }
         else
         {
-            Debug.Log(" play " + _madeChoice + " event from choice : " + AllChoices[choiceCounter].name);
+            GameEvent choiceEvent = currentChoiceDict[ImpactChoices.No];
+            Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
         }
     }
 
