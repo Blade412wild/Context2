@@ -1,35 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class AnimationActivator : MonoBehaviour
 {
-    private Animator animator;
+    private Animator ownAnimator;
     private Animator eventAnimator;
     private bool IsHovering;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        ownAnimator = GetComponent<Animator>();
         MouseDetection.OnMouseHoveringEnter += SetAnimationBoolTrue;
         MouseDetection.OnMouseHoveringExit += SetAnimationBoolFalse;
-
+        ChoiceObject.OnChoiceMade += PlayMainAnimation;
     }
+
+
+
+
     private void SetAnimationBoolTrue(Animator _animator)
     {
-        if (animator == _animator)
+        if (ownAnimator == _animator)
         {
             eventAnimator = _animator;
-            animator.SetBool("IsHovering", true);
+            ownAnimator.SetBool("IsHovering", true);
         }
     }
 
     private void SetAnimationBoolFalse()
     {
-        if (eventAnimator == animator)
+        if (eventAnimator == ownAnimator)
         {
             eventAnimator.SetBool("IsHovering", false);
+        }
+    }
+
+    private void PlayMainAnimation(ChoiceObject.ChoiceImpact _choiceMade)
+    {
+        if(eventAnimator == ownAnimator)
+        {
+            Debug.Log(" play main animation");
         }
     }
 }
