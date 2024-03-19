@@ -206,7 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d545f53f48008e41b5459205a905a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 951027844dab4584bb82d03b72031b90, type: 2}
 --- !u!114 &57017900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2284,6 +2283,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: a40252b717831684782d6d7b5a921513, type: 2}
   - {fileID: 7400000, guid: ee95700d0790476448c2b0e40a772a67, type: 2}
+  - {fileID: 7400000, guid: 708e12c4a7378894199c754c592fe454, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

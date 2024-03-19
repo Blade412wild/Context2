@@ -54,6 +54,7 @@ public class ChooserManager : MonoBehaviour
         if (choiceCounter < AllChoices.Length - 1)
         {
             currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
+
             choiceCounter++;
             Debug.Log(AllChoices[choiceCounter].name);
         }
@@ -84,13 +85,23 @@ public class ChooserManager : MonoBehaviour
         if (_madeChoice == ChoiceObject.ChoiceImpact.Yes)
         {
             GameEvent choiceEvent = currentChoiceDict[ImpactChoices.Yes];
-            Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
-            choiceEvent?.Invoke();
+
+            if (choiceEvent != null)
+            {
+                Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
+                choiceEvent?.Invoke();
+            }
         }
         else
         {
+
             GameEvent choiceEvent = currentChoiceDict[ImpactChoices.No];
-            Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
+
+            if (choiceEvent != null)
+            {
+                choiceEvent?.Invoke();
+                Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
+            }
         }
     }
 

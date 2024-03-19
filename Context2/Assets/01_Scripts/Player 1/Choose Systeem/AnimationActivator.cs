@@ -42,7 +42,7 @@ public class AnimationActivator : MonoBehaviour
     {
         if(eventAnimator == ownAnimator)
         {
-            Debug.Log(" play main animation");
+            ownAnimator.SetTrigger("Confirmation");
         }
     }
 }
