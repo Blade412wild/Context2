@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50639e18b7ef434bbc006bad03cfae9, type: 3}
-  m_Name: WaitingChoiceAnimationTimer
+  m_Script: {fileID: 11500000, guid: bd8b912a90787d846a2e7c76580e68f2, type: 3}
+  m_Name: BrugDestroyEvent
   m_EditorClassIdentifier: 
-  timerDuration: 1
-  repeat: 0
-  repeatAmount: 0
-  giveTimeBack: 0
