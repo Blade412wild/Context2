@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6534550627177225622}
   - component: {fileID: 6534550627177225617}
+  - component: {fileID: 1947891241}
   m_Layer: 0
   m_Name: DeliveryManager
   m_TagString: Untagged
@@ -57,3 +58,22 @@ MonoBehaviour:
   cRankPopup: {fileID: 0}
   deliveriesMadeText: {fileID: 0}
   rankInfoText: {fileID: 0}
+--- !u!114 &1947891241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534550627177225616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268bcc79eab5ca34b93e4d2c81903d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deliveryPointPrefab: {fileID: 8201240499053576871, guid: b6065570ce1edf644a577210b86b871d,
+    type: 3}
+  _playerAgent: {fileID: 0}
+  _destinationsEditor:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
