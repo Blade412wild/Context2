@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEditor;
@@ -13,17 +11,17 @@ public class CodeWriter : MonoBehaviour
     void Start()
     {
         
-        sb = new StringBuilder();
+        //sb = new StringBuilder();
 
-        sb.AppendLine("// DIT IS EEN REGEL CODE");
+        //sb.AppendLine("// DIT IS EEN REGEL CODE");
 
-        StreamWriter sw = File.CreateText(Path.Combine(Application.dataPath, "scripts/Generated/MyFile.cs"));
+        //StreamWriter sw = File.CreateText(Path.Combine(Application.dataPath, "scripts/Generated/MyFile.cs"));
 
-        sw.WriteLine(sb.ToString());
-        sw.Flush();
-        sw.Close();
+        //sw.WriteLine(sb.ToString());
+        //sw.Flush();
+        //sw.Close();
 
-        AssetDatabase.Refresh();
+        //AssetDatabase.Refresh();
 
     }
 
