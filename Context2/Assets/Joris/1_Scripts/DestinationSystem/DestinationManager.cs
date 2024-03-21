@@ -8,6 +8,7 @@ using UnityEngine.AI;
 //      Calculates new Destinations based on navmesh pathfinding.
 public class DestinationManager : MonoBehaviour
 {
+    [SerializeField] private GameObject deliveryPointPrefab;
     [SerializeField] private NavMeshAgent _playerAgent;
     [SerializeField] private List<Transform> _destinationsEditor;
 
@@ -21,7 +22,12 @@ public class DestinationManager : MonoBehaviour
         _destinations = _destinationsEditor.ToArray();
     }
 
-    private void NextDestination()
+    private void Start()
+    {
+        NextDestination();
+    }
+
+    public void NextDestination()
     {
         Vector3 newPos = _destinations.RandomItem().position;
 
@@ -36,5 +42,6 @@ public class DestinationManager : MonoBehaviour
         CurrentDestination = pos;
 
         // Whatever the fuck is supposed to be happening here!!
+        Instantiate(deliveryPointPrefab, CurrentDestination, Quaternion.identity);
     }
 }

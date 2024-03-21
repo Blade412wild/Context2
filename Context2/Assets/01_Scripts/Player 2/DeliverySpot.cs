@@ -7,6 +7,7 @@ public class DeliverySpot : MonoBehaviour
     [SerializeField] GameObject indicator;
 
     public DeliveryManager DeliveryManager;
+    public DestinationManager DestinationManager;
 
     bool delivered;
 
@@ -17,7 +18,8 @@ public class DeliverySpot : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        DeliveryManager = FindObjectOfType<DeliveryManager>();
+        DestinationManager = DeliveryManager.gameObject.GetComponent<DestinationManager>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class DeliverySpot : MonoBehaviour
     {
         delivered = true;
         DeliveryManager.Delivered();
+        DestinationManager.NextDestination();
         indicator.SetActive(false);
     }
 
