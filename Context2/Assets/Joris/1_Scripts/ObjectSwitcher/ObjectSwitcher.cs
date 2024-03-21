@@ -19,7 +19,8 @@ public class ObjectSwitcher : MonoBehaviour, IObjectSwitch
                 obj.SetActive(false);
         }
 
-        _navMeshBlock.SetActive(false);
+        if (_navMeshBlock != null)
+            _navMeshBlock.SetActive(false);
     }
 
     bool IObjectSwitch.GetState()
@@ -31,22 +32,23 @@ public class ObjectSwitcher : MonoBehaviour, IObjectSwitch
         return false;
     }
 
-    void IObjectSwitch.Activate()
-    {
-        foreach (GameObject obj in _objects)
-            obj.SetActive(true);
-    }
-
-    void IObjectSwitch.Deactivate()
-    {
-        foreach (GameObject obj in _objects)
-            obj.SetActive(false);
-    }
-
     Vector3 IObjectSwitch.Position => transform.position;
+
     ObjectSwitchType IObjectSwitch.SwitchType => _switchType;
 
-    void IObjectSwitch.ActivateNavMeshObstacle() => _navMeshBlock.SetActive(true);
+    void IObjectSwitch.SwitchMeshes(bool active)
+    {
+        foreach (GameObject obj in _objects)
+            obj.SetActive(active);
+    }
 
-    void IObjectSwitch.DeactivateNavMeshObstacle() => _navMeshBlock.SetActive(false);
+    void IObjectSwitch.SwitchMeshesRandom(bool active)
+    {
+        _objects.RandomItem().SetActive(active);
+    }
+
+    void IObjectSwitch.SwitchNevMeshObstacle(bool active)
+    {
+        _navMeshBlock.SetActive(active);
+    }
 }
