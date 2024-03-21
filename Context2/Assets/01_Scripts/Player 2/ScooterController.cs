@@ -19,6 +19,7 @@ public class ScooterController : MonoBehaviour
     [SerializeField] float velocityLossSpeed = 1;
 
     [SerializeField] Transform crashCollider;
+    [SerializeField] ParticleSystem crashParticlesPrefab;
 
     [SerializeField] KeyCode gasInput = KeyCode.Mouse0;
     [SerializeField] KeyCode reverseInput = KeyCode.Mouse1;
@@ -29,6 +30,7 @@ public class ScooterController : MonoBehaviour
     public bool isGassing;
     public bool isReversing;
     public bool isDrifting;
+    bool crashed;
 
     float appliedSteeringSpeed;
 
@@ -55,7 +57,7 @@ public class ScooterController : MonoBehaviour
         Steering();
         CrashCheck();
 
-        if (Input.GetKey(reverseInput) && !isDrifting)
+        if (Input.GetKey(reverseInput))
         {
             Reverse();
             isReversing = true;
@@ -69,15 +71,6 @@ public class ScooterController : MonoBehaviour
         {
             Gas();
             isGassing = true;
-
-            if (Input.GetKey(reverseInput))
-            {
-                isDrifting = true;
-            }
-            else
-            {
-                isDrifting = false;
-            }
         }
         else
         {
@@ -162,6 +155,10 @@ public class ScooterController : MonoBehaviour
         {
             Crash();
         }
+        else
+        {
+            crashed = false;
+        }
     }
 
     void Crash()
@@ -169,6 +166,11 @@ public class ScooterController : MonoBehaviour
         if (currentVelocity > 0)
         {
             currentVelocity = 0;
+            if (!crashed)
+            {
+                Instantiate(crashParticlesPrefab, crashCollider.position, Quaternion.identity);
+            }
+            crashed = true;
         }
     }
 

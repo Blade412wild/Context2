@@ -634,6 +634,8 @@ MonoBehaviour:
   maxVelocity: 30
   velocityLossSpeed: 1
   crashCollider: {fileID: 4747800078590841567}
+  crashParticlesPrefab: {fileID: 475573688381993166, guid: 865a9c851ad5b8445b7da48a1202f16d,
+    type: 3}
   gasInput: 32
   reverseInput: 304
   driftingInput: 9

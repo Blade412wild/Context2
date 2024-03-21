@@ -525,6 +525,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8435649245117096522, guid: e57f46157a5ba09468c52676468bc0d6,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435649245117096522, guid: e57f46157a5ba09468c52676468bc0d6,
+        type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -927,6 +932,21 @@ PrefabInstance:
         type: 3}
       propertyPath: velocityLossSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100141854041134807, guid: b2245a73cfff61b47b52d98c223760f1,
+        type: 3}
+      propertyPath: scooterParticles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100141854041134807, guid: b2245a73cfff61b47b52d98c223760f1,
+        type: 3}
+      propertyPath: scooterParticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100141854041134807, guid: b2245a73cfff61b47b52d98c223760f1,
+        type: 3}
+      propertyPath: scooterParticles.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2245a73cfff61b47b52d98c223760f1, type: 3}
@@ -2433,11 +2453,6 @@ PrefabInstance:
       objectReference: {fileID: 257684847}
     - target: {fileID: 2580592795907778109, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.06631603
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580592795907778109, guid: 183891a55b211e2498f128b5a956c156,
-        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.000000017168505
       objectReference: {fileID: 0}
@@ -2454,17 +2469,12 @@ PrefabInstance:
     - target: {fileID: 2580592796058473468, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000018994686
+      value: -0.0000000018994686
       objectReference: {fileID: 0}
     - target: {fileID: 2580592796058473468, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.9575977e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580592797085532088, guid: 183891a55b211e2498f128b5a956c156,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.084406644
+      value: 1.9575977e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2580592797085532088, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}

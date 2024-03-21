@@ -90,7 +90,7 @@ public class DeliveryManager : MonoBehaviour
 
         // Increase delivery counter
         deliveriesMade++;
-        deliveriesMadeText.text = "Deliveries made: " + deliveriesMade.ToString();
+        deliveriesMadeText.text = "Deliveries: " + deliveriesMade.ToString();
     }
 
     void IncreaseTime()
