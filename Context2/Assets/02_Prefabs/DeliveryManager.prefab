@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deliveriesMade: 0
   passedTime: 0
-  sRankTime: 10
-  aRankTime: 20
-  bRankTime: 30
+  sRankTime: 25
+  aRankTime: 50
+  bRankTime: 75
   timerText: {fileID: 0}
   timeBar: {fileID: 0}
   sRankPopup: {fileID: 0}

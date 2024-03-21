@@ -55,6 +55,16 @@ public class ScooterController : MonoBehaviour
         Steering();
         CrashCheck();
 
+        if (Input.GetKey(reverseInput) && !isDrifting)
+        {
+            Reverse();
+            isReversing = true;
+        }
+        else
+        {
+            isReversing = false;
+        }
+
         if (Input.GetKey(gasInput))
         {
             Gas();
@@ -73,15 +83,6 @@ public class ScooterController : MonoBehaviour
         {
             isGassing = false;
             isDrifting = false;
-        }
-        if (Input.GetKey(reverseInput) && !isDrifting)
-        {
-            Reverse();
-            isReversing = true;
-        }
-        else
-        {
-            isReversing = false;
         }
     }
 
