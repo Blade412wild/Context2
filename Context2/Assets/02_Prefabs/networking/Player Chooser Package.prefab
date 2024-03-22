@@ -155,6 +155,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8500808618348766519, guid: dcd3316ae7974604cb66ada2ec1479ab,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500808618348766519, guid: dcd3316ae7974604cb66ada2ec1479ab,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500808618348766519, guid: dcd3316ae7974604cb66ada2ec1479ab,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcd3316ae7974604cb66ada2ec1479ab, type: 3}
 --- !u!224 &8075435670896871245 stripped
