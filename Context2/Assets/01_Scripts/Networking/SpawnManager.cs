@@ -5,33 +5,42 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [Header("Player 1")]
-    [SerializeField] GameObject Player1;
-    [SerializeField] GameObject Camera;
-
-
+    [SerializeField] private GameObject cameraScooterPrefab;
+    [SerializeField] private GameObject SpawnPositionScooter;
 
     [Header("Player2")]
-    [SerializeField] GameObject Player2;
+    [SerializeField] private GameObject cameraChooserPrefab;
+    [SerializeField] private GameObject SpawnPositionChooser;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerNetwork.OnConnected += ChoosePlayer;
+    }
+
+    private void ChoosePlayer(PlayerNetwork _playerNetwork)
+    {
+        Debug.Log(" player " + _playerNetwork.OwnerClientId);
+        if (_playerNetwork.OwnerClientId == 0)
+        {
+            SpawnPlayerScooter();
+        }
+
+        if (_playerNetwork.OwnerClientId == 1)
+        {
+            SpawnPlayerChooser();
+        }
+    }
+    private void SpawnPlayerScooter()
+    {
+        GameObject ScooterPackage = Instantiate(cameraScooterPrefab);
+        ScooterPackage.transform.position = SpawnPositionScooter.transform.position;
+        
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnPlayerChooser()
     {
-        
-    }
-
-    private void SpawnPlayer1()
-    {
-
-    }
-
-    private void SpawnPlayer2()
-    {
-
+        GameObject cameraChooser = Instantiate(cameraChooserPrefab);
     }
 }

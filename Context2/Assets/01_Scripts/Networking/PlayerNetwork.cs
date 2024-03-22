@@ -9,38 +9,24 @@ public class PlayerNetwork : NetworkBehaviour
 {
     public static event Action<PlayerNetwork> OnConnected;
 
-    public GameEvent gameEvent;
-
-    public GameEvent Chooser;
-    public GameEvent Scooter;
-
-    private int amount = 1;
-
+    [SerializeField] private GameEvent gameEvent;
     public override void OnNetworkSpawn()
     {
         if (!IsOwner) return;
         OnConnected?.Invoke(this);
+
     }
 
-    //private void Start()
-    //{
-    //    if (!IsOwner) return;
-    //    OnConnected?.Invoke(this);
-    //}
     private void Update()
     {
         if (!IsOwner) return;
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.B) && OwnerClientId != 0)
         {
             TestServerRpc();
         }
 
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            TestClientRpc();
-        }
-
+        TestServerRpc();
         Vector3 moveDir = new Vector3(0, 0, 0);
 
         if (Input.GetKey(KeyCode.W)) moveDir.z = +1f;
@@ -58,13 +44,12 @@ public class PlayerNetwork : NetworkBehaviour
     private void TestServerRpc()
     {
         Debug.Log("TestServerRpc : " + OwnerClientId);
-        Scooter.Invoke();
+        gameEvent?.Invoke();
     }
 
     [ClientRpc]
     private void TestClientRpc()
     {
         Debug.Log("TestServerRpc : " + OwnerClientId);
-        Chooser.Invoke();
     } 
 }

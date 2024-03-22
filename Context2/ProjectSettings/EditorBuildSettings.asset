@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/04_Scenes/Neetworking/Networking.unity
     guid: adc2f699e17f12e4081092b40143df8b
-  - enabled: 1
+  - enabled: 0
     path: Assets/04_Scenes/Neetworking/Networking + events.unity
     guid: 6a6931db8a7aedf409e587c9250a8660
   - enabled: 1
