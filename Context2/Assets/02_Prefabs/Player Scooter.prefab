@@ -695,7 +695,8 @@ MonoBehaviour:
     type: 3}
   gasInput: 119
   reverseInput: 115
-  driftingInput: 9
+  gasInputB: 32
+  reverseInputB: 304
   currentVelocity: 0
   steeringDirection: 0
   isGassing: 0
