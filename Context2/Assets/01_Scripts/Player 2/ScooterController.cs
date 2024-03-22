@@ -21,9 +21,10 @@ public class ScooterController : MonoBehaviour
     [SerializeField] Transform crashCollider;
     [SerializeField] ParticleSystem crashParticlesPrefab;
 
-    [SerializeField] KeyCode gasInput = KeyCode.Mouse0;
-    [SerializeField] KeyCode reverseInput = KeyCode.Mouse1;
-    [SerializeField] KeyCode driftingInput = KeyCode.LeftShift;
+    [SerializeField] KeyCode gasInput = KeyCode.W;
+    [SerializeField] KeyCode reverseInput = KeyCode.S;
+    [SerializeField] KeyCode gasInputB = KeyCode.Space;
+    [SerializeField] KeyCode reverseInputB = KeyCode.LeftShift;
 
     public float currentVelocity;
     public float steeringDirection;
@@ -57,7 +58,7 @@ public class ScooterController : MonoBehaviour
         Steering();
         CrashCheck();
 
-        if (Input.GetKey(reverseInput))
+        if (Input.GetKey(reverseInput) || Input.GetKey(reverseInputB))
         {
             Reverse();
             isReversing = true;
@@ -67,7 +68,7 @@ public class ScooterController : MonoBehaviour
             isReversing = false;
         }
 
-        if (Input.GetKey(gasInput))
+        if (Input.GetKey(gasInput) || Input.GetKey(gasInputB))
         {
             Gas();
             isGassing = true;
@@ -102,22 +103,6 @@ public class ScooterController : MonoBehaviour
 
         //transform.Rotate(transform.rotation.x, steeringSpeed * Input.GetAxis("Horizontal"), transform.rotation.z);
         transform.RotateAround(steeringPoint.position, Vector3.up, appliedSteeringSpeed * steeringDirection * Time.deltaTime);
-
-        // Drifting
-        if (currentVelocity > 0 && Input.GetKey(driftingInput))
-        {
-            isDrifting = true;
-            appliedSteeringSpeed = steeringSpeed * driftingMultiplier;
-        }
-        else
-        {
-            isDrifting = false;
-            appliedSteeringSpeed = steeringSpeed;
-        }
-        if (isDrifting && currentVelocity > 0)
-        {
-            currentVelocity -= Time.deltaTime * driftingVelocityLoss;
-        }
     }
 
     void ApplyMovement()

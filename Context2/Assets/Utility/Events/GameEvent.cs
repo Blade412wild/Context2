@@ -6,7 +6,6 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "Game Event", fileName = "New Game Event")]
-
 public class GameEvent : ScriptableObject
 {
     HashSet<GameEventListener> listener = new HashSet<GameEventListener>();
@@ -17,7 +16,6 @@ public class GameEvent : ScriptableObject
         {
             globalEventListener.RaiseEvent();
         }
-
     }
 
     public void Register(GameEventListener gameEventListener) => listener.Add(gameEventListener);
