@@ -1,5 +1,6 @@
 ﻿using UnityEngine.AI;
 using UnityEngine;
+using System.Linq;
 
 public static class ObjectSwitcherExtensions
 {
@@ -27,5 +28,10 @@ public static class ObjectSwitcherExtensions
         if (!component) component = gameObject.AddComponent<T>();
 
         return component;
+    }
+
+    public static bool IsIn<T>(this T value, params T[] list)
+    {
+        return list.Contains(value);
     }
 }

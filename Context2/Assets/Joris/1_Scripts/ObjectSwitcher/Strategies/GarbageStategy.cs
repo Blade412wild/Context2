@@ -25,7 +25,7 @@ public class GarbageStategy : ObjectSwitchStrategy
 
         public void Build(IObjectSwitch[] obj, ObjectSwitchType type, bool active)
         {
-            IObjectSwitch[] filterTypes = obj.OrderBy(t => t.SwitchType.Equals(type)).ToArray();
+            IObjectSwitch[] filterTypes = obj.Where(t => t.SwitchType.Equals(type)).ToArray();
 
             foreach (IObjectSwitch item in filterTypes)
             {

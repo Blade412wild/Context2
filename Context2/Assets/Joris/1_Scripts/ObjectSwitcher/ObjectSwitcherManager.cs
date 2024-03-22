@@ -11,9 +11,9 @@ public class ObjectSwitcherManager : PersistentSingleton<ObjectSwitcherManager>
 
     private void Start()
     {
-        List<IObjectSwitch> objectSwitchTracersList = FindAllDataPersistanceObjects();
+        List<IObjectSwitch> objectSwitchTracersList = FindAllSwitchTracers();
 
-        static List<IObjectSwitch> FindAllDataPersistanceObjects()
+        static List<IObjectSwitch> FindAllSwitchTracers()
         {
             IEnumerable<IObjectSwitch> objectSwitchObjects = FindObjectsOfType<MonoBehaviour>()
                 .OfType<IObjectSwitch>();
@@ -25,4 +25,10 @@ public class ObjectSwitcherManager : PersistentSingleton<ObjectSwitcherManager>
     }
 
     public void OnEvent(ObjectSwitchType type, bool active) => _objSwitchStrategy[(int)type].PerformStrategy(_objectSwitchTracers, type, active);
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+            OnEvent(ObjectSwitchType.RoadBlock, true);
+    }
 }

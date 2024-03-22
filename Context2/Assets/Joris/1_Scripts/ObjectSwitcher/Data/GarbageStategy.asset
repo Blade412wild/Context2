@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2d2cdc9e99e2441b9f349977e340ec, type: 3}
   m_Name: GarbageStategy
   m_EditorClassIdentifier: 
-  amount: 1
+  amount: 10

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class ScooterController : MonoBehaviour
+public class ScooterController : MonoBehaviour, IPlayerTracer
 {
     [SerializeField] float moveSpeed = 10;
     [SerializeField] float steeringSpeed = 10;
@@ -21,11 +22,16 @@ public class ScooterController : MonoBehaviour
     [SerializeField] Transform crashCollider;
     [SerializeField] ParticleSystem crashParticlesPrefab;
 
+    [Header("Input")]
     [SerializeField] KeyCode gasInput = KeyCode.W;
     [SerializeField] KeyCode reverseInput = KeyCode.S;
     [SerializeField] KeyCode gasInputB = KeyCode.Space;
     [SerializeField] KeyCode reverseInputB = KeyCode.LeftShift;
 
+    [Header("NavTrash")]
+    private NavMeshAgent agent;
+
+    [Header("RunTimeValues")]
     public float currentVelocity;
     public float steeringDirection;
     public bool isGassing;
@@ -39,10 +45,17 @@ public class ScooterController : MonoBehaviour
 
     CharacterController controller;
 
+    #region IPlayerTracer
+    GameObject IPlayerTracer.GetGameObject => gameObject;
+    NavMeshAgent IPlayerTracer.GetNavAgent => agent;
+
+    #endregion
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         controller = GetComponent<CharacterController>();
+        agent = GetComponent<NavMeshAgent>();
 
         Cursor.lockState = CursorLockMode.Locked;
 

@@ -1,32 +1,52 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+
+// NIET NAAR DEZE CLASS KIJKEN BRO
+
+public interface IPlayerTracer 
+{
+    GameObject GetGameObject { get; }
+    NavMeshAgent GetNavAgent { get; }
+}
 
 [CreateAssetMenu(fileName = "RoadBlockStrategy", menuName = "ObjSwitchStrategy/RoadBlockStrategy")]
 public class RoadBlockStrategy : ObjectSwitchStrategy
 {
-    [SerializeField] private GameObject _player;
+    private GameObject _player;
+    private NavMeshAgent _playerAgent;
 
     public override void PerformStrategy(IObjectSwitch[] obj, ObjectSwitchType type, bool active)
     {
+        if (_player == null)
+        {
+            List<IPlayerTracer> IPlayerTracerList = FindAllTracers();
+
+            static List<IPlayerTracer> FindAllTracers()
+            {
+                IEnumerable<IPlayerTracer> tracers = FindObjectsOfType<MonoBehaviour>()
+                    .OfType<IPlayerTracer>();
+
+                return new List<IPlayerTracer>(tracers);
+            }
+
+            IPlayerTracerList.ToArray();
+
+            _player = IPlayerTracerList[0].GetGameObject;
+            _playerAgent = IPlayerTracerList[0].GetNavAgent;
+        }
+
         new RoadBlockBuilder()
-            .WithAgent(_player)
             .WithDestination(_player)
             .WithPosition(_player)
-            .Build(obj, type, active);
+            .Build(_playerAgent, obj, type, active);
     }
 
     private class RoadBlockBuilder
     {
-        private NavMeshAgent _playerAgent;
         private Vector3 _playerDestinion;
         private Vector3 _playerPosition;
-
-        public RoadBlockBuilder WithAgent(GameObject player)
-        {
-            _playerAgent = player.GetOrAdd<NavMeshAgent>();
-            return this;
-        }
 
         public RoadBlockBuilder WithDestination(GameObject player)
         {
@@ -40,18 +60,18 @@ public class RoadBlockStrategy : ObjectSwitchStrategy
             return this;
         }
 
-        public void Build(IObjectSwitch[] obj, ObjectSwitchType type, bool active)
+        public void Build(NavMeshAgent agent, IObjectSwitch[] obj, ObjectSwitchType type, bool active)
         {
-            IObjectSwitch[] filterTypes = obj.OrderBy(t => t.SwitchType.Equals(type)).ToArray();
+            IObjectSwitch[] filterTypes = obj.Where(t => t.SwitchType.Equals(type)).ToArray();
             IObjectSwitch[] nearestAvailableTypes = filterTypes.OrderBy(t => t.GetState().Equals(active))
                 .OrderBy(t => (t.Position - _playerPosition).sqrMagnitude).ToArray();
 
             foreach (var roadblock in nearestAvailableTypes)
             {
-                roadblock.SwitchNevMeshObstacle(!active);
+                roadblock.SwitchNevMeshObstacle(active);
 
-                if (_playerAgent.HasPath(_playerDestinion))
-                    roadblock.SwitchNevMeshObstacle(active);
+                if (agent.HasPath(_playerDestinion))
+                    roadblock.SwitchMeshes(active);
                 else
                 {
                     roadblock.SwitchNevMeshObstacle(!active);
