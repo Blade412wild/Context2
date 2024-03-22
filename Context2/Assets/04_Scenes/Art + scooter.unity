@@ -1899,11 +1899,7 @@ PrefabInstance:
     - target: {fileID: 1947891241, guid: 8106056ff9d4f9b45a0ea0759656e6e6, type: 3}
       propertyPath: _playerAgent
       value: 
-      objectReference: {fileID: 1409206053}
-    - target: {fileID: 1947891241, guid: 8106056ff9d4f9b45a0ea0759656e6e6, type: 3}
-      propertyPath: _destinationsEditor.Array.size
-      value: 8
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 850809800}
     - target: {fileID: 1947891241, guid: 8106056ff9d4f9b45a0ea0759656e6e6, type: 3}
       propertyPath: _destinationsEditor.Array.data[0]
       value: 
@@ -2917,6 +2913,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3326818515427749961, guid: aef68252bfb02ec429588f827202afc9,
     type: 3}
   m_PrefabInstance: {fileID: 3133096441507032632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &850809800 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 342480933239395493, guid: b2245a73cfff61b47b52d98c223760f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 257684846}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &853555208
 PrefabInstance:
@@ -5023,12 +5025,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1089079613277493430, guid: 6b4e078265b12494d8e0b8b36afb5de7,
     type: 3}
   m_PrefabInstance: {fileID: 1404608374}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &1409206053 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 5927123025486040605, guid: b2245a73cfff61b47b52d98c223760f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 257684846}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1413603930
 PrefabInstance:
