@@ -35,12 +35,12 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject ScooterPackage = Instantiate(cameraScooterPrefab);
         ScooterPackage.transform.position = SpawnPositionScooter.transform.position;
-        
-        
     }
 
     private void SpawnPlayerChooser()
     {
         GameObject cameraChooser = Instantiate(cameraChooserPrefab);
+        cameraChooser.transform.position = SpawnPositionChooser.transform.position;
+        cameraChooser.transform.rotation = SpawnPositionChooser.transform.rotation;
     }
 }

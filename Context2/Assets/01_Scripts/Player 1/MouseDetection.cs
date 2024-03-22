@@ -11,6 +11,8 @@ public class MouseDetection : MonoBehaviour
     public static event Action OnMouseHoveringExit;
     public static event Action<ChoiceObject> OnMouseClick;
 
+    [SerializeField] private Camera camera;
+
     //animation Variables
     private Vector3 previousMousePos;
     private int activationCall = 1;
@@ -38,6 +40,7 @@ public class MouseDetection : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 currentMousePos = Input.mousePosition;
+        
         if (CheckMouseMoved(currentMousePos) == true)
         {
             ShootRay(currentMousePos);
@@ -62,7 +65,8 @@ public class MouseDetection : MonoBehaviour
     }
     private void ShootRay(Vector3 _currentMousePos)
     {
-        Ray ray = Camera.main.ScreenPointToRay(_currentMousePos);
+
+        Ray ray = camera.ScreenPointToRay(_currentMousePos);
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {

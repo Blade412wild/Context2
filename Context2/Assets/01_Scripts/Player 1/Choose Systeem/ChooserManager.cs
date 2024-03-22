@@ -7,6 +7,7 @@ using System;
 public class ChooserManager : MonoBehaviour
 {
     public static event Action OnPlayAnimation;
+    public static event Action<GameEvent> OnSendEvent;
 
     private int choiceCounter = 0;
     private int previousChoiceCounter;
@@ -89,7 +90,7 @@ public class ChooserManager : MonoBehaviour
             if (choiceEvent != null)
             {
                 Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
-                choiceEvent?.Invoke();
+                OnSendEvent?.Invoke(choiceEvent);
             }
         }
         else
@@ -99,7 +100,7 @@ public class ChooserManager : MonoBehaviour
 
             if (choiceEvent != null)
             {
-                choiceEvent?.Invoke();
+                OnSendEvent?.Invoke(choiceEvent);
                 Debug.Log(" Answer: " + _madeChoice + ", play " + choiceEvent.name + " event from choice : " + AllChoices[choiceCounter].name);
             }
         }
