@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/04_Scenes/Neetworking/Networking + events.unity
     guid: 6a6931db8a7aedf409e587c9250a8660
+  - enabled: 1
+    path: Assets/04_Scenes/Neetworking/Networking + CameraSwitch.unity
+    guid: 99fefc00c32b508499af07595e6cc48f
   m_configObjects: {}
