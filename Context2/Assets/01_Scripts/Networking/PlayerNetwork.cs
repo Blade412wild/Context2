@@ -6,9 +6,17 @@ using UnityEngine;
 
 public class PlayerNetwork : NetworkBehaviour
 {
+    public GameEvent gameEvent;
+    private int amount = 1;
     private void Update()
     {
         if (!IsOwner) return;
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TestServerRpc();
+
+        }
 
         Vector3 moveDir = new Vector3(0,0,0);
 
@@ -21,5 +29,12 @@ public class PlayerNetwork : NetworkBehaviour
         float moveSpeed = 3f;
         transform.position += moveDir.normalized * moveSpeed * Time.deltaTime;
 
+    }
+
+    [ServerRpc]
+    private void TestServerRpc()
+    {
+        Debug.Log("TestServerRpc : " + OwnerClientId);
+        gameEvent.Invoke();
     }
 }
