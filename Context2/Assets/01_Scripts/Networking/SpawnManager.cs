@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+using Unity.Netcode.Transports.UTP;
+using UnityEngine.Networking;
+using Unity.Netcode.Components;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Header("Network")]
+    [SerializeField] private NetworkManager networkManager;
+    private UnityTransport networkTransport;
+
     [Header("Player 1")]
     [SerializeField] private GameObject cameraScooterPrefab;
     [SerializeField] private GameObject SpawnPositionScooter;
@@ -12,10 +20,15 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject cameraChooserPrefab;
     [SerializeField] private GameObject SpawnPositionChooser;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         PlayerNetwork.OnConnected += ChoosePlayer;
+
+        //setIPAdress();
+
     }
 
     private void ChoosePlayer(PlayerNetwork _playerNetwork)
@@ -42,5 +55,34 @@ public class SpawnManager : MonoBehaviour
         GameObject cameraChooser = Instantiate(cameraChooserPrefab);
         cameraChooser.transform.position = SpawnPositionChooser.transform.position;
         cameraChooser.transform.rotation = SpawnPositionChooser.transform.rotation;
+    }
+
+    public static string GetLocalIPAddress()
+    {
+        var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                return ip.ToString();
+            }
+        }
+
+        throw new System.Exception("No network adapters with an IPv4 address in the system!");
+    }
+
+    private void setIPAdress()
+    {
+        var networkrtest = networkManager.GetComponent<UnityTransport>();
+        networkTransport = networkrtest;
+
+        Debug.Log("current network adress " + networkrtest.ConnectionData.Address);
+
+        string ip = GetLocalIPAddress();
+        Debug.Log("Ip Adress: " + ip);
+
+        networkrtest.ConnectionData.Address = ip;
+
+        Debug.Log("current network adress " + networkrtest.ConnectionData.Address);
     }
 }
