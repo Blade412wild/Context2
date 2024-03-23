@@ -11,6 +11,7 @@ using UnityEngine;
 public class Timer
 {
     public static event Action OnTimerIsDone;
+    public event Action OnTimerIsDonePublic;
     public event Action<Timer> OnRemoveTimer;
 
     // timer 
@@ -67,11 +68,14 @@ public class Timer
                 currentTime = startTime;
                 currentAmount++;
                 OnTimerIsDone?.Invoke();
+                OnTimerIsDonePublic?.Invoke();
             }
             else
             {
                 OnTimerIsDone?.Invoke();
                 OnRemoveTimer?.Invoke(this);
+                OnTimerIsDonePublic?.Invoke();
+
             }
         }
     }

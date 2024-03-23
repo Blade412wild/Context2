@@ -93,7 +93,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d13a2307e1112284586691e75e5fe9bb, type: 2}
   - {fileID: 11400000, guid: 0f3e779d76c5b7e45aa0364cd8a40d0d, type: 2}
   - {fileID: 11400000, guid: 479358baa8afc7e4c889eb394bb9f297, type: 2}
-  - {fileID: 11400000, guid: 479358baa8afc7e4c889eb394bb9f297, type: 2}
+  - {fileID: 11400000, guid: 762e5c64206212b47aae7a2c0c7f3600, type: 2}
   ChoiceText: {fileID: 8075435672169488032}
   TimerText: {fileID: 8075435671087875433}
   animationTimer: {fileID: 11400000, guid: 59cefb154c7daed48bdaccd1a0c1f614, type: 2}

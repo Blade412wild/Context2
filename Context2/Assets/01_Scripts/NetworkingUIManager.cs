@@ -21,16 +21,17 @@ public class NetworkingUIManager : MonoBehaviour
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
 
-    [Header("UI Overige")]
+    [Header("Overige")]
     [SerializeField] private TMP_InputField inputfield;
+    [SerializeField] private TMP_Text StatusTekst;
     [SerializeField] private GameObject ClientMenu;
+    [SerializeField] private CustomTimer timer;
+
 
 
 
     private string playerInput;
-    private bool permissionToLink;
-
-
+    private bool playerIsLinked = false;
 
     private void Awake()
     {
@@ -44,11 +45,6 @@ public class NetworkingUIManager : MonoBehaviour
             ClickedOnClientButton();
         });
     }
-    private void Start()
-    {
-
-    }
-
     private void ClickedOnHostButton()
     {
         string ip = GetLocalIPAddress();
@@ -62,13 +58,12 @@ public class NetworkingUIManager : MonoBehaviour
 
 
         NetworkManager.Singleton.StartHost();
-        TurnOffMenuUI();
-
     }
 
     private void ClickedOnClientButton()
     {
         ClientMenu.SetActive(true);
+        StatusTekst.text = "Status : Waiting";
         // wait for button press event "Submit button" 
     }
 
@@ -81,7 +76,9 @@ public class NetworkingUIManager : MonoBehaviour
 
         SetIpAdress(decodedNumber);
         NetworkManager.Singleton.StartClient();
-        TurnOffMenuUI();
+
+        timer.CreateTimer();
+        timer.timerInstance.OnTimerIsDonePublic += CheckIfPlayerIsLinked;
     }
 
     private void SetIpAdress(string _ip)
@@ -95,8 +92,6 @@ public class NetworkingUIManager : MonoBehaviour
 
         Debug.Log("current network adress " + networkTransport.ConnectionData.Address);
     }
-
-
     private List<int> GetDigits(string _ip)
     {
         string[] parts = _ip.Split(".");
@@ -181,8 +176,10 @@ public class NetworkingUIManager : MonoBehaviour
 
     public void ReadPlayerInput()
     {
+        StatusTekst.text = "Status : Checking";
         string playerInput = inputfield.text;
         playerInput.ToLower();
+
         LinkWithHost(playerInput);
 
 
@@ -190,8 +187,23 @@ public class NetworkingUIManager : MonoBehaviour
         //playerInput = inputfield.text;
     }
 
-    private void TurnOffMenuUI()
+    public void TurnOffMenuUI()
     {
+        Debug.Log(" connected");
         this.gameObject.SetActive(false);
+    }
+
+    
+
+    public void CheckIfPlayerIsLinked()
+    {
+        if(playerIsLinked == true)
+        {
+            TurnOffMenuUI();
+        }
+        else
+        {
+            StatusTekst.text = "Status : IsNotConnected";
+        }
     }
 }

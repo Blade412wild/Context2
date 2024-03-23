@@ -10,12 +10,18 @@ public class PlayerNetwork : NetworkBehaviour
     public static event Action<PlayerNetwork> OnConnected;
 
     [SerializeField] private GameEvent gameEvent;
+    [SerializeField] private GameEvent clientIsLinked;
+    [SerializeField] private CustomTimer timer;
+
+
+
 
     public override void OnNetworkSpawn()
     {
         if (!IsOwner) return;
         OnConnected?.Invoke(this);
         ChooserManager.OnSendEvent += PrepareEventpackage;
+        clientIsLinked?.Invoke();
     }
 
     private void Update()
