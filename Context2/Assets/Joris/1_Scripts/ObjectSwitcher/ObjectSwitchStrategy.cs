@@ -21,5 +21,8 @@ public enum ObjectSwitchType
 {
     RoadBlock = 0,
     Garbage = 1,
-    PostProcessing = 2
+    PostProcessing = 2,
+    Park = 3,
+    Grannies = 4,
+    Trees = 5
 }
