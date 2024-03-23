@@ -15,7 +15,9 @@ public class NetworkingUIManager : MonoBehaviour
     [Header("Network")]
     [SerializeField] private NetworkManager networkManager;
     private UnityTransport networkTransport;
-    private string[] lettersArray = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
+    private string[] lettersArray = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
+    private char[] charArray = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
+
 
     [Header("UI Buttons")]
     [SerializeField] private Button hostButton;
@@ -27,11 +29,11 @@ public class NetworkingUIManager : MonoBehaviour
     [SerializeField] private GameObject ClientMenu;
     [SerializeField] private CustomTimer timer;
 
-
-
-
-    private string playerInput;
     private bool playerIsLinked = false;
+    private int firstDotCount;
+    private int secondDotCount;
+    private int thirdDotCount;
+    private int fourthDotCount = 6;
 
     private void Awake()
     {
@@ -56,6 +58,9 @@ public class NetworkingUIManager : MonoBehaviour
         string encodedNumber = EncodeDigits(digitsList);
         Debug.Log(" Ecoded Ip : " + encodedNumber);
 
+        List<char> letterList = GetLetters(encodedNumber);
+        string decodedNumber = DecodeDigits(letterList);
+        Debug.Log(" Ip Decoded Ip : " + decodedNumber);
 
         NetworkManager.Singleton.StartHost();
     }
@@ -69,7 +74,7 @@ public class NetworkingUIManager : MonoBehaviour
 
     private void LinkWithHost(string _encodedNumber)
     {
-        List<string> letterList = GetLetters(_encodedNumber);
+        List<char> letterList = GetLetters(_encodedNumber);
         string decodedNumber = DecodeDigits(letterList);
         Debug.Log(" Ip Decoded Ip : " + decodedNumber);
 
@@ -97,10 +102,36 @@ public class NetworkingUIManager : MonoBehaviour
         string[] parts = _ip.Split(".");
         string numberString = "";
         List<int> digitList = new List<int>();
-
+        int counter = 0;
         foreach (string part in parts)
         {
+            if (counter == 0)
+            {
+                firstDotCount = part.Length;
+                Debug.Log(" first dot L " + firstDotCount);
+            }
+            if (counter == 1)
+            {
+                secondDotCount = firstDotCount + part.Length;
+                Debug.Log(" second dot L " + secondDotCount);
+
+            }
+            if (counter == 2)
+            {
+                thirdDotCount = secondDotCount + part.Length;
+                Debug.Log(" third dot L " + thirdDotCount);
+
+
+            }
+            if (counter == 3)
+            {
+                fourthDotCount = thirdDotCount + part.Length;
+                Debug.Log(" fourth dot L " + fourthDotCount);
+
+            }
+
             numberString += part;
+            counter++;
         }
 
         for (int i = 0; i < numberString.Length; i++)
@@ -115,16 +146,25 @@ public class NetworkingUIManager : MonoBehaviour
     {
         List<string> encodedListDigits = new List<string>();
         string encodedNumber = "";
+
+        int counter = 0;
         foreach (int digit in _digitList)
         {
-            string ecodedDigit = lettersArray[digit - 1];
+            if (counter == firstDotCount || counter == secondDotCount || counter == thirdDotCount || counter == fourthDotCount)
+            {
+                encodedNumber += "-";
+            }
+
+            string ecodedDigit = lettersArray[digit];
             encodedNumber += ecodedDigit;
+
             encodedListDigits.Add(ecodedDigit);
+            counter++;
         }
         return encodedNumber;
 
     }
-    private string DecodeDigits(List<string> _letterList)
+    private string DecodeDigits(List<char> _letterList)
     {
         List<string> decodedListDigits = new List<string>();
         string decodedNumber = "";
@@ -132,30 +172,35 @@ public class NetworkingUIManager : MonoBehaviour
 
         for (int i = 0; i < _letterList.Count; i++)
         {
-            if (counter == 3)
+
+
+            char letter = _letterList[i];
+            Debug.Log(" char : " +  letter);
+            if(letter == '-')
             {
                 decodedNumber += ".";
-                counter = 0;
             }
-            string letter = _letterList[i];
-            int digit = (Array.IndexOf(lettersArray, letter) + 1);
-            decodedNumber += digit;
+            else
+            {
+                int digit = (Array.IndexOf(charArray, letter) + 0);
+                decodedNumber += digit;
+            }
 
             counter++;
         }
         return decodedNumber;
     }
 
-    private List<string> GetLetters(string _encodedIp)
+    private List<char> GetLetters(string _encodedIp)
     {
-        List<string> encodedListDigits = new List<string>();
+        List<char> encodedListDigits = new List<char>();
 
         for (int i = 0; i < _encodedIp.Length; i++)
         {
             char character = _encodedIp[i];
             string letter = character.ToString();
 
-            encodedListDigits.Add(letter);
+            encodedListDigits.Add(character);
         }
         return encodedListDigits;
     }
@@ -193,11 +238,11 @@ public class NetworkingUIManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    
+
 
     public void CheckIfPlayerIsLinked()
     {
-        if(playerIsLinked == true)
+        if (playerIsLinked == true)
         {
             TurnOffMenuUI();
         }
