@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using static Unity.VisualScripting.Member;
+using TMPro;
 
 public class NetworkingUIManager : MonoBehaviour
 {
@@ -19,6 +20,16 @@ public class NetworkingUIManager : MonoBehaviour
     [Header("UI Buttons")]
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
+
+    [Header("UI Overige")]
+    [SerializeField] private TMP_InputField inputfield;
+    [SerializeField] private GameObject ClientMenu;
+
+
+
+    private string playerInput;
+    private bool permissionToLink;
+
 
 
     private void Awake()
@@ -57,24 +68,26 @@ public class NetworkingUIManager : MonoBehaviour
 
     private void ClickedOnClientButton()
     {
+        ClientMenu.SetActive(true);
+        // wait for button press event "Submit button" 
+    }
 
-        string encodedNumber = "";
-        List<string> letterList = GetLetters(encodedNumber);
+    private void LinkWithHost(string _encodedNumber)
+    {
+        List<string> letterList = GetLetters(_encodedNumber);
         string decodedNumber = DecodeDigits(letterList);
         Debug.Log(" Ip Decoded Ip : " + decodedNumber);
 
 
-        SetIpAdress(GetLocalIPAddress());
+        SetIpAdress(decodedNumber);
         NetworkManager.Singleton.StartClient();
         TurnOffMenuUI();
-
     }
-
 
     private void SetIpAdress(string _ip)
     {
         networkTransport = networkManager.GetComponent<UnityTransport>();
-  
+
 
         Debug.Log("current network adress " + networkTransport.ConnectionData.Address);
 
@@ -164,6 +177,17 @@ public class NetworkingUIManager : MonoBehaviour
         }
 
         throw new System.Exception("No network adapters with an IPv4 address in the system!");
+    }
+
+    public void ReadPlayerInput()
+    {
+        string playerInput = inputfield.text;
+        playerInput.ToLower();
+        LinkWithHost(playerInput);
+
+
+        //        client needs to get a conformation that it is linked
+        //playerInput = inputfield.text;
     }
 
     private void TurnOffMenuUI()
