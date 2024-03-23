@@ -17,51 +17,70 @@ public class NetworkingUIManager : MonoBehaviour
     private string[] lettersArray = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
 
     [Header("UI Buttons")]
-    [SerializeField] private Button serverButton;
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
 
 
     private void Awake()
     {
-        serverButton.onClick.AddListener(() =>
-        {
-            NetworkManager.Singleton.StartServer();
-        });
-
         hostButton.onClick.AddListener(() =>
         {
-            NetworkManager.Singleton.StartHost();
+            ClickedOnHostButton();
         });
 
         clientButton.onClick.AddListener(() =>
         {
-            NetworkManager.Singleton.StartClient();
+            ClickedOnClientButton();
         });
     }
     private void Start()
     {
-        GetIpAdress();
+
     }
 
-    private void GetIpAdress()
+    private void ClickedOnHostButton()
     {
         string ip = GetLocalIPAddress();
         Debug.Log(" Ip Adress : " + ip);
+
+        SetIpAdress(ip);
 
         List<int> digitsList = GetDigits(ip);
         string encodedNumber = EncodeDigits(digitsList);
         Debug.Log(" Ecoded Ip : " + encodedNumber);
 
+
+        NetworkManager.Singleton.StartHost();
+        TurnOffMenuUI();
+
+    }
+
+    private void ClickedOnClientButton()
+    {
+
+        string encodedNumber = "";
         List<string> letterList = GetLetters(encodedNumber);
         string decodedNumber = DecodeDigits(letterList);
         Debug.Log(" Ip Decoded Ip : " + decodedNumber);
 
+
+        SetIpAdress(GetLocalIPAddress());
+        NetworkManager.Singleton.StartClient();
+        TurnOffMenuUI();
+
     }
 
-    private void SetIpAdress()
-    {
 
+    private void SetIpAdress(string _ip)
+    {
+        networkTransport = networkManager.GetComponent<UnityTransport>();
+  
+
+        Debug.Log("current network adress " + networkTransport.ConnectionData.Address);
+
+        networkTransport.ConnectionData.Address = _ip;
+
+        Debug.Log("current network adress " + networkTransport.ConnectionData.Address);
     }
 
 
@@ -147,22 +166,8 @@ public class NetworkingUIManager : MonoBehaviour
         throw new System.Exception("No network adapters with an IPv4 address in the system!");
     }
 
-    private void setIPAdress()
+    private void TurnOffMenuUI()
     {
-        var networkrtest = networkManager.GetComponent<UnityTransport>();
-        networkTransport = networkrtest;
-
-        Debug.Log("current network adress " + networkrtest.ConnectionData.Address);
-
-        string ip = GetLocalIPAddress();
-        Debug.Log("Ip Adress: " + ip);
-
-        networkrtest.ConnectionData.Address = ip;
-
-        Debug.Log("current network adress " + networkrtest.ConnectionData.Address);
+        this.gameObject.SetActive(false);
     }
-
-
-
-
 }
