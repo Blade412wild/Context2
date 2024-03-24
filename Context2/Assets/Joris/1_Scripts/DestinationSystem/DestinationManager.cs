@@ -24,7 +24,11 @@ public class DestinationManager : MonoBehaviour
     {
         _playerAgent.gameObject.GetOrAdd<NavMeshAgent>();
 
-
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, Mathf.Infinity, 1))
+        {
+            _playerAgent.Warp(hit.position);
+            _playerAgent.enabled = true;
+        }
 
         Destination[] desitantionNathan = FindObjectsByType<Destination>(FindObjectsSortMode.None);
         List<Transform> destinationsNathanList = new List<Transform>();
