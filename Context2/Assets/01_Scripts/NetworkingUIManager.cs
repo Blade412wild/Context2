@@ -47,6 +47,11 @@ public class NetworkingUIManager : MonoBehaviour
             ClickedOnClientButton();
         });
     }
+
+    private void Start()
+    {
+        networkManager = FindAnyObjectByType<NetworkManager>();
+    }
     private void ClickedOnHostButton()
     {
         string ip = GetLocalIPAddress();
