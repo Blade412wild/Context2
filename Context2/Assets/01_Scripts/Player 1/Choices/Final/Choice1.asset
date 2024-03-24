@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2340d206f3f7e49ba10743e6069379, type: 3}
+  m_Name: Choice1
+  m_EditorClassIdentifier: 
+  ChoiceText: De vuilnismannen gaan staken en eisen een grote loonsverhoging. Onmiddellijk
+    de lonen verhogen volgens hun wensen?
+  ChoiceImpactDict:
+    thisDictItems:
+    - typeImpact: 0
+      Impact: {fileID: 11400000, guid: 581662ab404bb194ea95e2505e3296e7, type: 2}
+    - typeImpact: 1
+      Impact: {fileID: 11400000, guid: 2f4b9364b65ddd94d85f11d0c14af421, type: 2}

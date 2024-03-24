@@ -94,6 +94,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f3e779d76c5b7e45aa0364cd8a40d0d, type: 2}
   - {fileID: 11400000, guid: 479358baa8afc7e4c889eb394bb9f297, type: 2}
   - {fileID: 11400000, guid: 762e5c64206212b47aae7a2c0c7f3600, type: 2}
+  - {fileID: 11400000, guid: da2a6f7845ed5644382147f43096b6c4, type: 2}
+  - {fileID: 11400000, guid: 4bf9b6d12cde93a4ba58a89a37f9876b, type: 2}
+  - {fileID: 11400000, guid: 1a6e2080213289046a3bf1be79357b4c, type: 2}
+  - {fileID: 11400000, guid: e26caa2717446744d912f6f1cf351714, type: 2}
+  - {fileID: 11400000, guid: e26caa2717446744d912f6f1cf351714, type: 2}
+  - {fileID: 11400000, guid: 336e146e57171a24a8b2ad2ec963c6b4, type: 2}
+  - {fileID: 11400000, guid: 8ac16339573cbff4db250526d061f162, type: 2}
+  - {fileID: 11400000, guid: f80d96757cfde094da77f4ea2fde46f1, type: 2}
+  - {fileID: 11400000, guid: 7895fb8b0eba6294092b49173b70f841, type: 2}
+  - {fileID: 11400000, guid: d794613a338f3bf4e80370fd02e310be, type: 2}
+  - {fileID: 11400000, guid: c892321de9d13a142b2344b7e6c48413, type: 2}
+  - {fileID: 11400000, guid: 83f3fe5e99b049440b87f2d3f3f0f11a, type: 2}
+  - {fileID: 11400000, guid: 35ca9c639ef594a40a666cc2b005f36e, type: 2}
+  - {fileID: 11400000, guid: d6cacb4442ca1f144a5b9bf8e9849b3c, type: 2}
+  - {fileID: 11400000, guid: 56eb95623fbba214e98c889236b52d0c, type: 2}
+  - {fileID: 11400000, guid: c96a9439284476e488e7c26068d9edcc, type: 2}
   ChoiceText: {fileID: 8075435672169488032}
   TimerText: {fileID: 8075435671087875433}
   animationTimer: {fileID: 11400000, guid: 59cefb154c7daed48bdaccd1a0c1f614, type: 2}
