@@ -11,8 +11,14 @@ public class ObjectSwitcher : MonoBehaviour, IObjectSwitch
     [SerializeField]
     private GameObject[] _objects;
 
+    [SerializeField]
+    private bool _startEnabled = false;
+
     public void Awake()
     {
+        if (_startEnabled)
+            return;
+
         foreach (GameObject obj in _objects)
         {
             if (obj.activeInHierarchy)
