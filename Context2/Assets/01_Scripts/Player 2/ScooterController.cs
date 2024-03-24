@@ -20,6 +20,7 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
     [SerializeField] float velocityLossSpeed = 1;
 
     [SerializeField] Transform crashCollider;
+    [SerializeField] Transform crashCollider2;
     [SerializeField] ParticleSystem crashParticlesPrefab;
 
     [Header("Input")]
@@ -150,24 +151,34 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
     void CrashCheck()
     {
         if (Physics.CheckSphere(crashCollider.position, 0.4f, groundLayer))
-        {
-            Crash();
-        }
-        else
-        {
-            crashed = false;
-        }
+            CrashForward();
+
+        if (Physics.CheckSphere(crashCollider2.position, 0.4f, groundLayer))
+            CrashBack();
+
+        crashed = false;
     }
 
-    void Crash()
+    void CrashForward()
     {
         if (currentVelocity > 0)
         {
             currentVelocity = 0;
             if (!crashed)
-            {
                 Instantiate(crashParticlesPrefab, crashCollider.position, Quaternion.identity);
-            }
+
+            crashed = true;
+        }
+    }
+
+    void CrashBack()
+    {
+        if (currentVelocity < 0)
+        {
+            currentVelocity = 0;
+            if (!crashed)
+                Instantiate(crashParticlesPrefab, crashCollider2.position, Quaternion.identity);
+
             crashed = true;
         }
     }
@@ -192,5 +203,6 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(groundCheck.position, groundDistance);
         Gizmos.DrawSphere(crashCollider.position, 0.4f);
+        Gizmos.DrawSphere(crashCollider2.position, 0.4f);
     }
 }

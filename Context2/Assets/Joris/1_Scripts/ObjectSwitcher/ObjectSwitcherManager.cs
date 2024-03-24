@@ -25,10 +25,4 @@ public class ObjectSwitcherManager : PersistentSingleton<ObjectSwitcherManager>
     }
 
     public void OnEvent(ObjectSwitchType type, bool active) => _objSwitchStrategy[(int)type].PerformStrategy(_objectSwitchTracers, type, active);
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-            OnEvent(ObjectSwitchType.RoadBlock, true);
-    }
 }
