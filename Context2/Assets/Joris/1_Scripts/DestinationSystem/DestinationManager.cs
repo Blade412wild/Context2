@@ -23,6 +23,9 @@ public class DestinationManager : MonoBehaviour
     private void Awake()
     {
         _playerAgent.gameObject.GetOrAdd<NavMeshAgent>();
+
+
+
         Destination[] desitantionNathan = FindObjectsByType<Destination>(FindObjectsSortMode.None);
         List<Transform> destinationsNathanList = new List<Transform>();
 
@@ -33,7 +36,6 @@ public class DestinationManager : MonoBehaviour
         }
         Debug.Log("list length" + destinationsNathanList.Count);
 
-        int counter = 0;
         foreach (Transform transform in destinationsNathanList)
         {
             Debug.Log(transform.position);
