@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2340d206f3f7e49ba10743e6069379, type: 3}
   m_Name: ChoiceFinal
   m_EditorClassIdentifier: 
-  ChoiceText: 'De bingoclub houd een borrel midden op straat. Actie ondernemen en
-    de borrel onderbreken? '
+  ChoiceText: Er ontstaat een hoop verkeer in de stad door bezorgingsdiensten, wat
+    het milieu extreem verslechterd. Wetten inzetten om bezorgingen in de stad te
+    verminderen?
   ChoiceImpactDict:
     thisDictItems:
     - typeImpact: 0
-      Impact: {fileID: 11400000, guid: 581662ab404bb194ea95e2505e3296e7, type: 2}
+      Impact: {fileID: 11400000, guid: 6ac3d668c883a654ebc838df3b8449a1, type: 2}
     - typeImpact: 1
-      Impact: {fileID: 11400000, guid: c4973065c2246ce4480f42a8588dc1bc, type: 2}
+      Impact: {fileID: 11400000, guid: 581662ab404bb194ea95e2505e3296e7, type: 2}
