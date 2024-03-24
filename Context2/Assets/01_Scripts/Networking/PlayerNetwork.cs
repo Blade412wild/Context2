@@ -12,9 +12,6 @@ public class PlayerNetwork : NetworkBehaviour
     [SerializeField] private GameEvent gameEvent;
     [SerializeField] private GameEvent clientIsLinked;
 
-
-
-
     public override void OnNetworkSpawn()
     {
         if (!IsOwner) return;

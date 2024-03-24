@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using JetBrains.Annotations;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,23 @@ public class DestinationManager : MonoBehaviour
     private void Awake()
     {
         _playerAgent.gameObject.GetOrAdd<NavMeshAgent>();
+        Destination[] desitantionNathan = FindObjectsByType<Destination>(FindObjectsSortMode.None);
+        List<Transform> destinationsNathanList = new List<Transform>();
+
+        foreach (Destination _object in desitantionNathan)
+        {
+            destinationsNathanList.Add(_object.transform);
+            //destinationsNathanList.Add(_object as Transform);            
+        }
+        Debug.Log("list length" + destinationsNathanList.Count);
+
+        int counter = 0;
+        foreach (Transform transform in destinationsNathanList)
+        {
+            Debug.Log(transform.position);
+        }
+
+        _destinationsEditor = destinationsNathanList;
         _destinations = _destinationsEditor.ToArray();
     }
 

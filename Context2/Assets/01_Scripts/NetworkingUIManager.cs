@@ -37,6 +37,7 @@ public class NetworkingUIManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("addListner");
         hostButton.onClick.AddListener(() =>
         {
             ClickedOnHostButton();
@@ -113,25 +114,25 @@ public class NetworkingUIManager : MonoBehaviour
             if (counter == 0)
             {
                 firstDotCount = part.Length;
-                Debug.Log(" first dot L " + firstDotCount);
+                //Debug.Log(" first dot L " + firstDotCount);
             }
             if (counter == 1)
             {
                 secondDotCount = firstDotCount + part.Length;
-                Debug.Log(" second dot L " + secondDotCount);
+                //Debug.Log(" second dot L " + secondDotCount);
 
             }
             if (counter == 2)
             {
                 thirdDotCount = secondDotCount + part.Length;
-                Debug.Log(" third dot L " + thirdDotCount);
+                //Debug.Log(" third dot L " + thirdDotCount);
 
 
             }
             if (counter == 3)
             {
                 fourthDotCount = thirdDotCount + part.Length;
-                Debug.Log(" fourth dot L " + fourthDotCount);
+                //Debug.Log(" fourth dot L " + fourthDotCount);
 
             }
 
@@ -180,7 +181,7 @@ public class NetworkingUIManager : MonoBehaviour
 
 
             char letter = _letterList[i];
-            Debug.Log(" char : " +  letter);
+            //Debug.Log(" char : " +  letter);
             if(letter == '-')
             {
                 decodedNumber += ".";
