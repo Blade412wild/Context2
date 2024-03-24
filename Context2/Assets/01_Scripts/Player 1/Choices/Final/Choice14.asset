@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2340d206f3f7e49ba10743e6069379, type: 3}
+  m_Name: Choice14
+  m_EditorClassIdentifier: 
+  ChoiceText: 'Bomen in de stad groeien hard en lopen uit de hand. Investeren in
+    het wegkappen van een aantal overgroeide bomen? '
+  ChoiceImpactDict:
+    thisDictItems:
+    - typeImpact: 0
+      Impact: {fileID: 11400000, guid: 9f3826249d58df14e93b7cda15d36efd, type: 2}
+    - typeImpact: 1
+      Impact: {fileID: 11400000, guid: 711cb5aaf31233b4e9144efd921f9da1, type: 2}

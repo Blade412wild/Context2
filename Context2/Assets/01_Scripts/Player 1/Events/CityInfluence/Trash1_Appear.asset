@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e2340d206f3f7e49ba10743e6069379, type: 3}
-  m_Name: Choice3
+  m_Script: {fileID: 11500000, guid: bd8b912a90787d846a2e7c76580e68f2, type: 3}
+  m_Name: Trash1_Appear
   m_EditorClassIdentifier: 
-  ChoiceText: Bomen, planten en parken verschijnen
-  ChoiceImpactDict:
-    thisDictItems:
-    - typeImpact: 0
-      Impact: 100
-    - typeImpact: 1
-      Impact: 100
