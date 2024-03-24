@@ -11,7 +11,6 @@ public class PlayerNetwork : NetworkBehaviour
 
     [SerializeField] private GameEvent gameEvent;
     [SerializeField] private GameEvent clientIsLinked;
-    [SerializeField] private CustomTimer timer;
 
 
 
