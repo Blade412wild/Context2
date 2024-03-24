@@ -12,9 +12,7 @@ public class Choices : ScriptableObject
 
     [Header("Choices Impact")]
     public NewDict ChoiceImpactDict = new NewDict();
-
 }
-
 
 [Serializable]
 public class NewDict

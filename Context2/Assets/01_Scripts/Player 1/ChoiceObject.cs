@@ -23,9 +23,5 @@ public class ChoiceObject : MonoBehaviour
         {
             OnChoiceMade?.Invoke(choice);
         }
-
-
     }
-
-
 }

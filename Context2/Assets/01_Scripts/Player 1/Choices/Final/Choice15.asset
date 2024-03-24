@@ -20,4 +20,4 @@ MonoBehaviour:
     - typeImpact: 0
       Impact: {fileID: 11400000, guid: 581662ab404bb194ea95e2505e3296e7, type: 2}
     - typeImpact: 1
-      Impact: {fileID: 11400000, guid: 172f196ac3a271d4896fb4deb94a562a, type: 2}
+      Impact: {fileID: 11400000, guid: 597cc67e76a50674aba193acf4da1a33, type: 2}

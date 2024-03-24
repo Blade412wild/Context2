@@ -18,18 +18,14 @@ public class ChooserManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ChoiceText;
     [SerializeField] private TextMeshProUGUI TimerText;
 
-
     [Header("Timers")]
     [SerializeField] private CustomTimer animationTimer;
     [SerializeField] private CustomTimer dayTimer;
 
-
     [Header("GameObjects")]
     [SerializeField] private GameObject textUi;
 
-
     private Dictionary<ImpactChoices, GameEvent> currentChoiceDict;
-
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +36,6 @@ public class ChooserManager : MonoBehaviour
         UpdateUI();
         Debug.Log(AllChoices[choiceCounter].name);
         dayTimer.CreateTimer();
-
     }
 
     private void Update()

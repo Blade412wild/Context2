@@ -17,6 +17,6 @@ MonoBehaviour:
   ChoiceImpactDict:
     thisDictItems:
     - typeImpact: 0
-      Impact: {fileID: 11400000, guid: e8d9bedb4b466824ba39b7f51b7a19b5, type: 2}
+      Impact: {fileID: 11400000, guid: 2f4b9364b65ddd94d85f11d0c14af421, type: 2}
     - typeImpact: 1
-      Impact: {fileID: 11400000, guid: 935c4268d95939246b5123e55bf6dc45, type: 2}
+      Impact: {fileID: 11400000, guid: 2f4b9364b65ddd94d85f11d0c14af421, type: 2}
