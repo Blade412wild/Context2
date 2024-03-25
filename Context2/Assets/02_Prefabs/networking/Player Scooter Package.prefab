@@ -486,10 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e0963348d6e7943aba663b769e04f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  steeringSpeed: 80
-  driftingMultiplier: 2
-  driftingVelocityLoss: 15
+  moveSpeed: 8
+  steeringSpeed: 90
   gravityForce: 15
   groundCheck: {fileID: 4595506604221204708}
   groundLayer:
@@ -497,7 +495,7 @@ MonoBehaviour:
     m_Bits: 128
   groundDistance: 0.4
   steeringPoint: {fileID: 4595506604747800160}
-  maxVelocity: 30
+  maxVelocity: 25
   velocityLossSpeed: 10
   crashCollider: {fileID: 4595506603918163626}
   crashCollider2: {fileID: 1033918908483772343}
@@ -1360,12 +1358,12 @@ PrefabInstance:
     - target: {fileID: 2580592795907778109, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019168146
+      value: -0.000000018988336
       objectReference: {fileID: 0}
     - target: {fileID: 2580592795907778109, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000031142475
+      value: 0.0000000030850345
       objectReference: {fileID: 0}
     - target: {fileID: 2580592796058473468, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
@@ -1390,12 +1388,12 @@ PrefabInstance:
     - target: {fileID: 2580592796058473468, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 3.5733077e-25
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 2580592796058473468, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.3899447e-25
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2580592796449216621, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
@@ -1420,12 +1418,12 @@ PrefabInstance:
     - target: {fileID: 2580592797085532088, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 8.217565e-30
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2580592797085532088, guid: 183891a55b211e2498f128b5a956c156,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.250537e-30
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 183891a55b211e2498f128b5a956c156, type: 3}

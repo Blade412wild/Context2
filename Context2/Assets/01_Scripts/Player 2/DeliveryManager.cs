@@ -32,6 +32,8 @@ public class DeliveryManager : MonoBehaviour
     Animator timerAnimator;
     float second = 0;
 
+    public bool freezeTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,10 @@ public class DeliveryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IncreaseTime();
+        if (!freezeTimer)
+        {
+            IncreaseTime();
+        }
         TimeSlider();
 
         timerText.text = passedTime.ToString("F2");

@@ -7,8 +7,6 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
 {
     [SerializeField] float moveSpeed = 10;
     [SerializeField] float steeringSpeed = 10;
-    [SerializeField] float driftingMultiplier = 1.5f;
-    [SerializeField] float driftingVelocityLoss = 5;
     [SerializeField] float gravityForce = 10;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
@@ -38,7 +36,8 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
     public bool isGassing;
     public bool isReversing;
     public bool isDrifting;
-    bool crashed;
+    bool crashedFront;
+    bool crashedBack;
 
     float appliedSteeringSpeed;
 
@@ -151,12 +150,22 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
     void CrashCheck()
     {
         if (Physics.CheckSphere(crashCollider.position, 0.4f, groundLayer))
+        {
             CrashForward();
+        }
+        else
+        {
+            crashedFront = false;
+        }
 
         if (Physics.CheckSphere(crashCollider2.position, 0.4f, groundLayer))
+        {
             CrashBack();
-
-        crashed = false;
+        }
+        else
+        {
+            crashedBack = false;
+        }
     }
 
     void CrashForward()
@@ -164,10 +173,10 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
         if (currentVelocity > 0)
         {
             currentVelocity = 0;
-            if (!crashed)
+            if (!crashedFront)
                 Instantiate(crashParticlesPrefab, crashCollider.position, Quaternion.identity);
 
-            crashed = true;
+            crashedFront = true;
         }
     }
 
@@ -176,10 +185,10 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
         if (currentVelocity < 0)
         {
             currentVelocity = 0;
-            if (!crashed)
+            if (!crashedBack)
                 Instantiate(crashParticlesPrefab, crashCollider2.position, Quaternion.identity);
 
-            crashed = true;
+            crashedBack = true;
         }
     }
 
