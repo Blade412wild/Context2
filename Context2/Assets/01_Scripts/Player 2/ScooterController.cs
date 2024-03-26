@@ -45,6 +45,8 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
 
     CharacterController controller;
 
+    public bool freezeMovement;
+
     #region IPlayerTracer
     GameObject IPlayerTracer.GetGameObject => gameObject;
     NavMeshAgent IPlayerTracer.GetNavAgent => agent;
@@ -71,25 +73,28 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
         Steering();
         CrashCheck();
 
-        if (Input.GetKey(reverseInput) || Input.GetKey(reverseInputB))
+        if (!freezeMovement)
         {
-            Reverse();
-            isReversing = true;
-        }
-        else
-        {
-            isReversing = false;
-        }
+            if (Input.GetKey(reverseInput) || Input.GetKey(reverseInputB))
+            {
+                Reverse();
+                isReversing = true;
+            }
+            else
+            {
+                isReversing = false;
+            }
 
-        if (Input.GetKey(gasInput) || Input.GetKey(gasInputB))
-        {
-            Gas();
-            isGassing = true;
-        }
-        else
-        {
-            isGassing = false;
-            isDrifting = false;
+            if (Input.GetKey(gasInput) || Input.GetKey(gasInputB))
+            {
+                Gas();
+                isGassing = true;
+            }
+            else
+            {
+                isGassing = false;
+                isDrifting = false;
+            }
         }
     }
 
