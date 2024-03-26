@@ -34,12 +34,22 @@ public class AnimationActivator : MonoBehaviour
             eventAnimator.SetBool("IsHovering", false);
         }
     }
-
     private void PlayMainAnimation(ChoiceObject.ChoiceImpact _choiceMade)
     {
         if(eventAnimator == ownAnimator)
         {
             ownAnimator.SetTrigger("Confirmation");
         }
+
+        if (_choiceMade == ChoiceObject.ChoiceImpact.Yes)
+        {
+            ownAnimator.SetTrigger("Yes");
+        }
+
+        if (_choiceMade == ChoiceObject.ChoiceImpact.No)
+        {
+            ownAnimator.SetTrigger("No");
+        }
+
     }
 }
