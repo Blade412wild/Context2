@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/04_Scenes/Neetworking/Networking + CameraSwitch.unity
     guid: 99fefc00c32b508499af07595e6cc48f
-  - enabled: 1
+  - enabled: 0
     path: Assets/04_Scenes/Neetworking/Networking + menu.unity
     guid: 982159607994d674cbfd7b2202315edf
-  - enabled: 1
+  - enabled: 0
     path: Assets/04_Scenes/Neetworking/Networking + art.unity
     guid: 24dc0a163d0c8414ba0318ef2e5ea3c1
   - enabled: 1
