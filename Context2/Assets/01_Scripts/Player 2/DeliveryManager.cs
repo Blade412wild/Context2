@@ -54,19 +54,19 @@ public class DeliveryManager : MonoBehaviour
 
         if (currentRank == Ranks.S)
         {
-            rankInfoText.text = "/ " + sRankTime.ToString("F2") + " - " + currentRank.ToString() + " Rank";
+            rankInfoText.text = "/ " + sRankTime.ToString("F2") + " - " + "3 Sterren";
         }
         if (currentRank == Ranks.A)
         {
-            rankInfoText.text = "/ " + aRankTime.ToString("F2") + " - " + currentRank.ToString() + " Rank";
+            rankInfoText.text = "/ " + aRankTime.ToString("F2") + " - " + "2 Sterren";
         }
         if (currentRank == Ranks.B)
         {
-            rankInfoText.text = "/ " + bRankTime.ToString("F2") + " - " + currentRank.ToString() + " Rank";
+            rankInfoText.text = "/ " + bRankTime.ToString("F2") + " - " + "1 Ster";
         }
         if (currentRank == Ranks.C)
         {
-            rankInfoText.text = currentRank.ToString() + " Rank";
+            rankInfoText.text ="0 Sterren...";
         }
 
         if (Input.GetKey(KeyCode.Mouse2))

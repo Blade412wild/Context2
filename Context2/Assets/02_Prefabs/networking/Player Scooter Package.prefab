@@ -453,11 +453,12 @@ MonoBehaviour:
   timerText: {fileID: 8435649244424973072}
   timeBar: {fileID: 8435649244482018319}
   sRankPopup: {fileID: 8435649244103147800}
-  aRankPopup: {fileID: 8435649244626794253}
-  bRankPopup: {fileID: 8435649243725719158}
-  cRankPopup: {fileID: 8435649244717050712}
+  aRankPopup: {fileID: 7159906067129148831}
+  bRankPopup: {fileID: 1947483791222968202}
+  cRankPopup: {fileID: 6542157034217394181}
   deliveriesMadeText: {fileID: 8435649244514423631}
   rankInfoText: {fileID: 8435649243760243078}
+  freezeTimer: 0
 --- !u!114 &684199539051921469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +511,7 @@ MonoBehaviour:
   isGassing: 0
   isReversing: 0
   isDrifting: 0
+  freezeMovement: 0
 --- !u!114 &5246844164137617533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,6 +868,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4595506605361797004}
     m_Modifications:
+    - target: {fileID: 579043291358738547, guid: e57f46157a5ba09468c52676468bc0d6,
+        type: 3}
+      propertyPath: m_text
+      value: succes! utrecht ligt in jouw handen...
+      objectReference: {fileID: 0}
     - target: {fileID: 8435649245117096522, guid: e57f46157a5ba09468c52676468bc0d6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -993,9 +1000,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57f46157a5ba09468c52676468bc0d6, type: 3}
---- !u!1 &8435649243725719158 stripped
+--- !u!1 &1947483791222968202 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8435649244644525917, guid: e57f46157a5ba09468c52676468bc0d6,
+  m_CorrespondingSourceObject: {fileID: 1947483792191598241, guid: e57f46157a5ba09468c52676468bc0d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1254367531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6542157034217394181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6542157035194937646, guid: e57f46157a5ba09468c52676468bc0d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1254367531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7159906067129148831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7159906068106151092, guid: e57f46157a5ba09468c52676468bc0d6,
     type: 3}
   m_PrefabInstance: {fileID: 1254367531}
   m_PrefabAsset: {fileID: 0}
@@ -1059,18 +1078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8435649244626794253 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8435649243640862246, guid: e57f46157a5ba09468c52676468bc0d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1254367531}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8435649244717050712 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8435649243554957939, guid: e57f46157a5ba09468c52676468bc0d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1254367531}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8381690973592176640
 PrefabInstance:
   m_ObjectHideFlags: 0
