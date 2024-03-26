@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/04_Scenes/Neetworking/Networking + Final.unity
     guid: f90537d30562a9941b763547e8eff292
+  - enabled: 1
+    path: Assets/04_Scenes/FinalScenes/Chooser.unity
+    guid: 20d4ca41da4bc3e41b781f777a4f7a3b
+  - enabled: 1
+    path: Assets/04_Scenes/FinalScenes/MainMenu.unity
+    guid: f1da7eb16f7c86c41a6d9aa5d5c302c5
   m_configObjects: {}

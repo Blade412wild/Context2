@@ -40,8 +40,6 @@ public class TimerManager : MonoBehaviour
         }
 
         timersTobeRemoved.Clear();
-
-
     }
 
     

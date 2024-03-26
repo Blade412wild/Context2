@@ -37,9 +37,15 @@ public class AnimationActivator : MonoBehaviour
 
     private void PlayMainAnimation(ChoiceObject.ChoiceImpact _choiceMade)
     {
-        if(eventAnimator == ownAnimator)
+        if (_choiceMade == ChoiceObject.ChoiceImpact.Yes)
         {
-            ownAnimator.SetTrigger("Confirmation");
+            ownAnimator.SetTrigger("Yes");
         }
+
+        if (_choiceMade == ChoiceObject.ChoiceImpact.No)
+        {
+            ownAnimator.SetTrigger("No");
+        }
+
     }
 }
