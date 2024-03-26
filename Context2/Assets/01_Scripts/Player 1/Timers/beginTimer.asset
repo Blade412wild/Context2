@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b50639e18b7ef434bbc006bad03cfae9, type: 3}
-  m_Name: WaitingChoiceAnimationTimer
+  m_Name: beginTimer
   m_EditorClassIdentifier: 
-  timerDuration: 12
+  timerDuration: 4.5
   repeat: 0
   repeatAmount: 0
   giveTimeBack: 0

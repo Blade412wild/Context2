@@ -21,6 +21,8 @@ public class ChooserManager : MonoBehaviour
     [Header("Timers")]
     [SerializeField] private CustomTimer animationTimer;
     [SerializeField] private CustomTimer dayTimer;
+    [SerializeField] private CustomTimer beginWaitTime;
+
 
     [Header("GameObjects")]
     [SerializeField] private GameObject textUi;
@@ -30,12 +32,15 @@ public class ChooserManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textUi.SetActive(false);
         ChoiceObject.OnChoiceMade += NextChoice;
         Timer.OnTimerIsDone += UpdateUI;
         currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
-        UpdateUI();
         Debug.Log(AllChoices[choiceCounter].name);
         dayTimer.CreateTimer();
+        beginWaitTime.CreateTimer();
+        beginWaitTime.timerInstance.OnTimerIsDonePublic += UpdateUI;
+
     }
 
     private void Update()
