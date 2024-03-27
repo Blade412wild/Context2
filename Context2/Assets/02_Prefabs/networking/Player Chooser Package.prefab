@@ -611,10 +611,10 @@ GameObject:
   - component: {fileID: 1645071484}
   - component: {fileID: 1645071483}
   - component: {fileID: 1645071485}
+  - component: {fileID: 1645071489}
   - component: {fileID: 1645071488}
   - component: {fileID: 1645071487}
   - component: {fileID: 1645071486}
-  - component: {fileID: 1645071489}
   m_Layer: 0
   m_Name: Trashcan
   m_TagString: Untagged
@@ -710,6 +710,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &1645071489
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645071482}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 382c4d46e032ffc44864609ec11b320c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 382c4d46e032ffc44864609ec11b320c, type: 2}
+  - {fileID: 7400000, guid: e1d9bccf91a0e6a488b44ccf902206a6, type: 2}
+  - {fileID: 7400000, guid: c6299fce8dcd7044e8008b1270d7b715, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &1645071488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,24 +766,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.42, y: -4.6, z: 0.2}
   m_Center: {x: 5.93, y: -1.62, z: 0}
---- !u!111 &1645071489
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645071482}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 382c4d46e032ffc44864609ec11b320c, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 382c4d46e032ffc44864609ec11b320c, type: 2}
-  - {fileID: 7400000, guid: e1d9bccf91a0e6a488b44ccf902206a6, type: 2}
-  - {fileID: 7400000, guid: c6299fce8dcd7044e8008b1270d7b715, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1764473550
 GameObject:
   m_ObjectHideFlags: 0

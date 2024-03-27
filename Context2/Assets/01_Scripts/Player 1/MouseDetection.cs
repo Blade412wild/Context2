@@ -86,8 +86,6 @@ public class MouseDetection : MonoBehaviour
                 activationCall = 0; // makes sure that the event won't be activated multiple times
                 deActivationCall = 1;  //makes sure that the hoverExit event can be called 
             }
-
-
         }
         else
         {

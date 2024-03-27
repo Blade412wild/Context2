@@ -31,6 +31,8 @@ public class NetworkingUIManager2 : MonoBehaviour
 
     private void Start()
     {
+        PlayerNetwork.OnConnected += TurnOffMenuUI;
+
         if (networkManager != null) return;
         networkManager = FindAnyObjectByType<NetworkManager>();
     }
@@ -219,10 +221,13 @@ public class NetworkingUIManager2 : MonoBehaviour
         //playerInput = inputfield.text;
     }
 
-    public void TurnOffMenuUI()
+    public void TurnOffMenuUI(PlayerNetwork _playerNetwork)
     {
-        Debug.Log(" connected");
-        this.gameObject.SetActive(false);
+        if (_playerNetwork.OwnerClientId == 1)
+        {
+            var ui = FindObjectOfType<NetworkingUIManager2>();
+            ui.gameObject.SetActive(false);
+        }
     }
 
 
@@ -231,11 +236,12 @@ public class NetworkingUIManager2 : MonoBehaviour
     {
         if (playerIsLinked == true)
         {
-            TurnOffMenuUI();
+            //TurnOffMenuUI();
         }
         else
         {
             StatusTekst.text = "Status : IsNotConnected";
+
         }
     }
 }

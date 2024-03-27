@@ -15,7 +15,10 @@ public class AnimationActivator : MonoBehaviour
         ChoiceObject.OnChoiceMade += PlayMainAnimation;
     }
 
-
+    private void Update()
+    {
+        Debug.Log("eventanimator : " + eventAnimator);
+    }
 
 
     private void SetAnimationBoolTrue(Animator _animator)
@@ -29,24 +32,29 @@ public class AnimationActivator : MonoBehaviour
 
     private void SetAnimationBoolFalse()
     {
-        if (eventAnimator == ownAnimator)
+        if (eventAnimator == ownAnimator && eventAnimator != null)
         {
             eventAnimator.SetBool("IsHovering", false);
         }
     }
     private void PlayMainAnimation(ChoiceObject.ChoiceImpact _choiceMade)
     {
-        if(eventAnimator == ownAnimator)
+        Debug.Log("event-animator : " + eventAnimator);
+        Debug.Log("own-animator : " + ownAnimator);
+        Debug.Log("choicemade : " + _choiceMade);
+       
+        
+        if (eventAnimator == ownAnimator && eventAnimator != null)
         {
             ownAnimator.SetTrigger("Confirmation");
         }
 
-        if (_choiceMade == ChoiceObject.ChoiceImpact.Yes)
+        if (_choiceMade == ChoiceObject.ChoiceImpact.Yes && ownAnimator != null)
         {
             ownAnimator.SetTrigger("Yes");
         }
 
-        if (_choiceMade == ChoiceObject.ChoiceImpact.No)
+        if (_choiceMade == ChoiceObject.ChoiceImpact.No && ownAnimator != null)
         {
             ownAnimator.SetTrigger("No");
         }

@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Player2")]
     [SerializeField] private GameObject cameraChooserPrefab;
-    [SerializeField] private GameObject SpawnPositionChooser;
+    [SerializeField] private Transform SpawnPositionChooser;
 
 
 
@@ -52,9 +52,10 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnPlayerChooser()
     {
-        GameObject cameraChooser = Instantiate(cameraChooserPrefab);
-        cameraChooser.transform.position = SpawnPositionChooser.transform.position;
-        cameraChooser.transform.rotation = SpawnPositionChooser.transform.rotation;
+        GameObject chooserPackagePrefab = Instantiate(cameraChooserPrefab);
+        SpawnPositionChooser = FindObjectOfType<ChoosePos>().transform;
+        chooserPackagePrefab.transform.position = SpawnPositionChooser.position;
+       // chooserPackagePrefab.transform.rotation = SpawnPositionChooser.transform.rotation;
     }
 
     public static string GetLocalIPAddress()
