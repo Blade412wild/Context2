@@ -104,6 +104,8 @@ public class DeliveryManager : MonoBehaviour
         passedTime = 0;
         second = 0;
 
+        statTracker.CheckHighstScore();
+
         // Increase delivery counter
         deliveriesMade++;
         statTracker.deliveriesMade++;

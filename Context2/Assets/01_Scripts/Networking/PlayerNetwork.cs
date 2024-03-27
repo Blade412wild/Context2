@@ -10,6 +10,7 @@ public class PlayerNetwork : NetworkBehaviour
     public static event Action<PlayerNetwork> OnConnected;
 
     [SerializeField] private GameEvent clientIsLinked;
+    [SerializeField] private GameEvent OnEndSequence;
     [SerializeField] private EventList eventListScripableObject;
 
     public override void OnNetworkSpawn()
@@ -28,9 +29,9 @@ public class PlayerNetwork : NetworkBehaviour
     {
         if (!IsOwner) return;
 
-        if (Input.GetKeyDown(KeyCode.B) && OwnerClientId == 1)
+        if (Input.GetKeyDown(KeyCode.B) && OwnerClientId == 0)
         {
-            //PrepareEventpackage(gameEvent);
+            OnEndSequence?.Invoke();
         }
     }
 

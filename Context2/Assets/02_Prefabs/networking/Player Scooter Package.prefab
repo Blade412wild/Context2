@@ -1070,6 +1070,52 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1254367531}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8435649244125426332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8435649245354611639, guid: e57f46157a5ba09468c52676468bc0d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1254367531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1511514384735677548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435649244125426332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154db584c4ec70f4489616e146b86fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3bc3ffa36a870f140979faad9856690e, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6011780655399797625}
+        m_TargetAssemblyTypeName: turnOffCanvas, Assembly-CSharp
+        m_MethodName: TurnOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6011780655399797625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435649244125426332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf7fca99ff76fe4badd83854eddcd55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8435649244424973072 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8435649245594913339, guid: e57f46157a5ba09468c52676468bc0d6,
@@ -1243,17 +1289,17 @@ PrefabInstance:
     - target: {fileID: 5752310381111243744, guid: a7c285a5b2bfe90428b26e29b2247e81,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17714778
+      value: 0.1771478
       objectReference: {fileID: 0}
     - target: {fileID: 5752310381111243744, guid: a7c285a5b2bfe90428b26e29b2247e81,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.109130934
+      value: 0.10913092
       objectReference: {fileID: 0}
     - target: {fileID: 5752310381111243744, guid: a7c285a5b2bfe90428b26e29b2247e81,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.019768892
+      value: -0.01976889
       objectReference: {fileID: 0}
     - target: {fileID: 5752310381111243744, guid: a7c285a5b2bfe90428b26e29b2247e81,
         type: 3}
