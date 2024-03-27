@@ -28,20 +28,25 @@ public class ChooserManager : MonoBehaviour
     [Header("GameObjects")]
     [SerializeField] private GameObject textUi;
 
+    [Header("Scritps")]
+    [SerializeField] private StapelBehaviour stapelBehaviour;
+
     private Dictionary<ImpactChoices, GameEvent> currentChoiceDict;
 
     // Start is called before the first frame update
     void Start()
     {
         textUi.SetActive(false);
+
         ChoiceObject.OnChoiceMade += NextChoice;
         Timer.OnTimerIsDone += UpdateUI;
+
+        stapelBehaviour.StapelSetup(AllChoices.Length);
+
         currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
-        Debug.Log(AllChoices[choiceCounter].name);
         dayTimer.CreateTimer();
         beginWaitTime.CreateTimer();
         beginWaitTime.timerInstance.OnTimerIsDonePublic += UpdateUI;
-
     }
 
     private void Update()
@@ -51,6 +56,7 @@ public class ChooserManager : MonoBehaviour
 
     public void NextChoice(ChoiceObject.ChoiceImpact _madeChoice)
     {
+        stapelBehaviour.NextSprite();
         PlayChoiceConsequenceEvent(_madeChoice);
         WaitForAnimation(_madeChoice);
         if (choiceCounter < AllChoices.Length - 1)
