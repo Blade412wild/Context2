@@ -46,7 +46,7 @@ public class ChooserManager : MonoBehaviour
         currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
         dayTimer.CreateTimer();
         beginWaitTime.CreateTimer();
-        beginWaitTime.timerInstance.OnTimerIsDonePublic += UpdateUI;
+        //beginWaitTime.timerInstance.OnTimerIsDonePublic += UpdateUI;
     }
 
     private void Update()
@@ -77,7 +77,8 @@ public class ChooserManager : MonoBehaviour
         if (choiceCounter < AllChoices.Length)
         {
             ChoiceText.text = AllChoices[choiceCounter].ChoiceText;
-            textUi.SetActive(true);
+            Debug.Log("textUi : " + textUi);
+            //textUi.SetActive(true);
         }
     }
 

@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Player 1")]
     [SerializeField] private GameObject cameraScooterPrefab;
-    [SerializeField] private GameObject SpawnPositionScooter;
+    [SerializeField] private Transform SpawnPositionScooter;
 
     [Header("Player2")]
     [SerializeField] private GameObject cameraChooserPrefab;
@@ -47,7 +47,9 @@ public class SpawnManager : MonoBehaviour
     private void SpawnPlayerScooter()
     {
         GameObject ScooterPackage = Instantiate(cameraScooterPrefab);
-        ScooterPackage.transform.position = SpawnPositionScooter.transform.position;
+        SpawnPositionScooter = FindObjectOfType<ScooterPos>().transform;
+        Debug.Log("SpawnPositionScooter");
+        ScooterPackage.transform.position = SpawnPositionScooter.position;
     }
 
     private void SpawnPlayerChooser()
@@ -55,7 +57,6 @@ public class SpawnManager : MonoBehaviour
         GameObject chooserPackagePrefab = Instantiate(cameraChooserPrefab);
         SpawnPositionChooser = FindObjectOfType<ChoosePos>().transform;
         chooserPackagePrefab.transform.position = SpawnPositionChooser.position;
-       // chooserPackagePrefab.transform.rotation = SpawnPositionChooser.transform.rotation;
     }
 
     public static string GetLocalIPAddress()

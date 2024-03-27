@@ -55,7 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 195723282}
   - component: {fileID: 195723281}
-  - component: {fileID: 195723280}
   - component: {fileID: 805134599}
   m_Layer: 0
   m_Name: Stapel
@@ -131,27 +130,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &195723280
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195723279}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 854a6c1c4a9539043b85b946034e59c3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &805134599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +174,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 93f877a2acaf7324ba6c74c4c58eae4d, type: 3}
   - {fileID: 21300000, guid: 93f877a2acaf7324ba6c74c4c58eae4d, type: 3}
   emptySprite: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   counter: 0
 --- !u!1 &485705733
 GameObject:
@@ -639,7 +618,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35ca9c639ef594a40a666cc2b005f36e, type: 2}
   - {fileID: 11400000, guid: d6cacb4442ca1f144a5b9bf8e9849b3c, type: 2}
   - {fileID: 11400000, guid: 56eb95623fbba214e98c889236b52d0c, type: 2}
-  - {fileID: 11400000, guid: c96a9439284476e488e7c26068d9edcc, type: 2}
+  - {fileID: 11400000, guid: ca4cd7d54ca6a194d94c376159b6df28, type: 2}
   ChoiceText: {fileID: 8075435672169488032}
   TimerText: {fileID: 8075435671087875433}
   yesAnimationTimer: {fileID: 11400000, guid: 9179eb9ddc6dfd749becd63afc24942c, type: 2}

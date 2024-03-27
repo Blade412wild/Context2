@@ -15,12 +15,6 @@ public class AnimationActivator : MonoBehaviour
         ChoiceObject.OnChoiceMade += PlayMainAnimation;
     }
 
-    private void Update()
-    {
-        Debug.Log("eventanimator : " + eventAnimator);
-    }
-
-
     private void SetAnimationBoolTrue(Animator _animator)
     {
         if (ownAnimator == _animator)

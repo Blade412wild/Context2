@@ -7,10 +7,10 @@ public class StapelBehaviour : MonoBehaviour
     [SerializeField] private List<Sprite> sprites = new List<Sprite>();
     [SerializeField] private Sprite emptySprite;
 
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
 
-    [SerializeField]private int counter = 0;
+    [SerializeField] private int counter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +19,22 @@ public class StapelBehaviour : MonoBehaviour
 
     public void StapelSetup(int _choiceListCount)
     {
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
         counter = sprites.Count - _choiceListCount;
         Debug.Log(sprites[counter].name);
         Debug.Log(spriteRenderer);
         spriteRenderer.sprite = sprites[counter];
+
     }
 
     public void NextSprite()
     {
         counter++;
-        if (sprites[counter] != null)
+        if (sprites[counter] != null && spriteRenderer != null)
         {
             spriteRenderer.sprite = sprites[counter];
         }
