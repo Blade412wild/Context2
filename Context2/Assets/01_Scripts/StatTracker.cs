@@ -6,7 +6,7 @@ public class StatTracker : MonoBehaviour
 {
     [Space]
     [Header("Scores")]
-    public int gemScore = 0;
+    public int gemScore = -1;
     public int ScoreS = 0; // 0
     public int ScoreA = 0; // 1
     public int ScoreB = 0; // 2
@@ -37,6 +37,15 @@ public class StatTracker : MonoBehaviour
         scoresDic[1] = ScoreA;
         scoresDic[2] = ScoreB;
         scoresDic[3] = ScoreC;
+
+        foreach (int i in scoresDic.Keys)
+        {
+            Debug.Log("score : " + i + " = " + scoresDic[i]);
+            if (scoresDic[i] > scoresDic[gemScore])
+            {
+                gemScore = i;
+            }
+        }
     }
 
     public void CheckHighstScore()

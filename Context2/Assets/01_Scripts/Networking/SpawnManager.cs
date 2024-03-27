@@ -11,6 +11,8 @@ public class SpawnManager : MonoBehaviour
     [Header("Network")]
     [SerializeField] private NetworkManager networkManager;
     private UnityTransport networkTransport;
+    [SerializeField] private SpawnData spawnData;
+
 
     [Header("Player 1")]
     [SerializeField] private GameObject cameraScooterPrefab;
@@ -26,9 +28,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         PlayerNetwork.OnConnected += ChoosePlayer;
-
         //setIPAdress();
-
     }
 
     private void ChoosePlayer(PlayerNetwork _playerNetwork)
@@ -47,16 +47,17 @@ public class SpawnManager : MonoBehaviour
     private void SpawnPlayerScooter()
     {
         GameObject ScooterPackage = Instantiate(cameraScooterPrefab);
-        SpawnPositionScooter = FindObjectOfType<ScooterPos>().transform;
-        Debug.Log("SpawnPositionScooter : " + SpawnPositionScooter);
-        ScooterPackage.transform.position = SpawnPositionScooter.position;
+        //SpawnPositionScooter = FindObjectOfType<ScooterPos>().transform;
+        Debug.Log("SpawnPositionScooter : " + spawnData.spawnTransformScooter.position);
+        ScooterPackage.transform.position = spawnData.spawnTransformScooter.position;
     }
 
     private void SpawnPlayerChooser()
     {
         GameObject chooserPackagePrefab = Instantiate(cameraChooserPrefab);
-        SpawnPositionChooser = FindObjectOfType<ChoosePos>().transform;
-        chooserPackagePrefab.transform.position = SpawnPositionChooser.position;
+        //SpawnPositionChooser = FindObjectOfType<ChoosePos>().transform;
+        Debug.Log("SpawnPositionScooter : " + spawnData.spawnTransformChooser.position);
+        chooserPackagePrefab.transform.position = spawnData.spawnTransformChooser.position;
     }
 
     public static string GetLocalIPAddress()
