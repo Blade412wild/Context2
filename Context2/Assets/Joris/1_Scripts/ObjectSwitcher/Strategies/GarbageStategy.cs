@@ -11,6 +11,7 @@ public class GarbageStategy : ObjectSwitchStrategy
         new GarbageBuilder()
             .WithAmount(amount)
             .Build(obj, type, active);
+        Debug.Log("YES IT WROKS");
     }
 
     private class GarbageBuilder

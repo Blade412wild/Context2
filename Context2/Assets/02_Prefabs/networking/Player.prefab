@@ -62,8 +62,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269d96d74e0d4a94a829036f1dd042bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 3bc3ffa36a870f140979faad9856690e, type: 2}
+  gameEvent: {fileID: 0}
   clientIsLinked: {fileID: 11400000, guid: c668530cf251a8c40a795372ef64a02f, type: 2}
+  eventListScripableObject: {fileID: 11400000, guid: 0e093c2d51e4fb04d81d80a96ed02bce,
+    type: 2}
 --- !u!114 &1025667112786805757
 MonoBehaviour:
   m_ObjectHideFlags: 0
