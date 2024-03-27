@@ -78,7 +78,7 @@ public class ChooserManager : MonoBehaviour
         {
             ChoiceText.text = AllChoices[choiceCounter].ChoiceText;
             Debug.Log("textUi : " + textUi);
-            //textUi.SetActive(true);
+            textUi.SetActive(true);
         }
     }
 
