@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DeliveryManager : MonoBehaviour
 {
     public int deliveriesMade;
+    [SerializeField] private CustomTimer waitForMessage;
 
     [Space]
     [Header("Timer")]
@@ -32,13 +33,19 @@ public class DeliveryManager : MonoBehaviour
     Animator timerAnimator;
     float second = 0;
 
+    private StatTracker statTracker;
+
     public bool freezeTimer;
 
     // Start is called before the first frame update
     void Start()
     {
+        freezeTimer = true;
         deliveriesMadeText.text = "Deliveries made: " + deliveriesMade.ToString();
         timerAnimator = timerText.GetComponentInParent<Animator>();
+        statTracker = GetComponent<StatTracker>();
+        waitForMessage.CreateTimer();
+        waitForMessage.timerInstance.OnTimerIsDonePublic += UnfreezeTime;
     }
 
     // Update is called once per frame
@@ -80,14 +87,18 @@ public class DeliveryManager : MonoBehaviour
 
     }
 
+    private void UnfreezeTime()
+    {
+        freezeTimer = false;
+    }
     public void Delivered()
     {
         // Display Aquired Rank
         Debug.Log("Rank " + currentRank + "! ~ Delievered in " + passedTime + " seconds.");
-        if (currentRank == Ranks.S) { sRankPopup.SetActive(true); }
-        else if (currentRank == Ranks.A) { aRankPopup.SetActive(true); }
-        else if (currentRank == Ranks.B) { bRankPopup.SetActive(true); }
-        else if (currentRank == Ranks.C) { cRankPopup.SetActive(true); }
+        if (currentRank == Ranks.S) { sRankPopup.SetActive(true); statTracker.ScoreS++; }
+        else if (currentRank == Ranks.A) { aRankPopup.SetActive(true); statTracker.ScoreA++; }
+        else if (currentRank == Ranks.B) { bRankPopup.SetActive(true); statTracker.ScoreB++; }
+        else if (currentRank == Ranks.C) { cRankPopup.SetActive(true); statTracker.ScoreC++; }
 
         // Reset time
         passedTime = 0;
@@ -95,11 +106,13 @@ public class DeliveryManager : MonoBehaviour
 
         // Increase delivery counter
         deliveriesMade++;
+        statTracker.deliveriesMade++;
         deliveriesMadeText.text = "Deliveries: " + deliveriesMade.ToString();
     }
 
     void IncreaseTime()
     {
+        statTracker.playTime += Time.deltaTime;
         passedTime += Time.deltaTime;
 
         second += Time.deltaTime;

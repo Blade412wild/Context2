@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2340d206f3f7e49ba10743e6069379, type: 3}
   m_Name: Choice0
   m_EditorClassIdentifier: 
-  ChoiceText: 
+  ChoiceText: 'Welkom bij je eerste dag als bestuurder van Utrecht! Jouw taak is
+    simpel: Onderteken het formulier, of niet. Gebruik maar dit formulier als oefening.
+    Tijd is echter kostbaar, dus houd de vaart er in!'
   ChoiceImpactDict:
-    thisDictItems: []
+    thisDictItems:
+    - typeImpact: 0
+      Impact: {fileID: 11400000, guid: 581662ab404bb194ea95e2505e3296e7, type: 2}
+    - typeImpact: 1
+      Impact: {fileID: 11400000, guid: 581662ab404bb194ea95e2505e3296e7, type: 2}
