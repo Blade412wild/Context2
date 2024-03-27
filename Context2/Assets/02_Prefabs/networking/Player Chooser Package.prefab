@@ -596,7 +596,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c96a9439284476e488e7c26068d9edcc, type: 2}
   ChoiceText: {fileID: 8075435672169488032}
   TimerText: {fileID: 8075435671087875433}
-  animationTimer: {fileID: 11400000, guid: 59cefb154c7daed48bdaccd1a0c1f614, type: 2}
+  yesAnimationTimer: {fileID: 11400000, guid: 9179eb9ddc6dfd749becd63afc24942c, type: 2}
+  noAnimationTimer: {fileID: 11400000, guid: 59cefb154c7daed48bdaccd1a0c1f614, type: 2}
   dayTimer: {fileID: 11400000, guid: 2d1a1a2e6789283438de7eebc1433cde, type: 2}
   beginWaitTime: {fileID: 11400000, guid: b5c7089c7eb3d7d4f8e1c04916a22f80, type: 2}
   textUi: {fileID: 8075435671628834210}

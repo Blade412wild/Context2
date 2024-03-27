@@ -19,7 +19,8 @@ public class ChooserManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TimerText;
 
     [Header("Timers")]
-    [SerializeField] private CustomTimer animationTimer;
+    [SerializeField] private CustomTimer yesAnimationTimer;
+    [SerializeField] private CustomTimer noAnimationTimer;
     [SerializeField] private CustomTimer dayTimer;
     [SerializeField] private CustomTimer beginWaitTime;
 
@@ -51,7 +52,7 @@ public class ChooserManager : MonoBehaviour
     public void NextChoice(ChoiceObject.ChoiceImpact _madeChoice)
     {
         PlayChoiceConsequenceEvent(_madeChoice);
-        WaitForAnimation();
+        WaitForAnimation(_madeChoice);
         if (choiceCounter < AllChoices.Length - 1)
         {
             currentChoiceDict = AllChoices[choiceCounter].ChoiceImpactDict.ToDictionary();
@@ -74,11 +75,18 @@ public class ChooserManager : MonoBehaviour
         }
     }
 
-    private void WaitForAnimation()
+    private void WaitForAnimation(ChoiceObject.ChoiceImpact _madeChoice)
     {
         OnPlayAnimation?.Invoke();
         textUi.SetActive(false);
-        animationTimer.CreateTimer();
+        if (_madeChoice == ChoiceObject.ChoiceImpact.Yes)
+        {
+            yesAnimationTimer.CreateTimer();
+        }
+        else
+        {
+            noAnimationTimer.CreateTimer();
+        }
     }
 
     private void PlayChoiceConsequenceEvent(ChoiceObject.ChoiceImpact _madeChoice)
