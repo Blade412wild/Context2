@@ -618,8 +618,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83f3fe5e99b049440b87f2d3f3f0f11a, type: 2}
   - {fileID: 11400000, guid: 35ca9c639ef594a40a666cc2b005f36e, type: 2}
   - {fileID: 11400000, guid: d6cacb4442ca1f144a5b9bf8e9849b3c, type: 2}
-  - {fileID: 11400000, guid: 56eb95623fbba214e98c889236b52d0c, type: 2}
   - {fileID: 11400000, guid: ca4cd7d54ca6a194d94c376159b6df28, type: 2}
+  - {fileID: 11400000, guid: 56eb95623fbba214e98c889236b52d0c, type: 2}
   ChoiceText: {fileID: 8075435672169488032}
   TimerText: {fileID: 8075435671087875433}
   yesAnimationTimer: {fileID: 11400000, guid: 9179eb9ddc6dfd749becd63afc24942c, type: 2}

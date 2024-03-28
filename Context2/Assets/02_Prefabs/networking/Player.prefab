@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientIsLinked: {fileID: 11400000, guid: c668530cf251a8c40a795372ef64a02f, type: 2}
-  OnEndSequence: {fileID: 11400000, guid: 3bc3ffa36a870f140979faad9856690e, type: 2}
+  OnEndSequence: {fileID: 11400000, guid: 0583e19c9b3c5e74e9ed463dab5cdcdf, type: 2}
   eventListScripableObject: {fileID: 11400000, guid: 0e093c2d51e4fb04d81d80a96ed02bce,
     type: 2}
 --- !u!114 &1025667112786805757

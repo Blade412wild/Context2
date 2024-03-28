@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void SpawnPlayerScooter()
     {
-        GameObject ScooterPackage = Instantiate(cameraScooterPrefab);
+        GameObject ScooterPackage = Instantiate(cameraScooterPrefab, spawnData.spawnTransformScooter);
         //SpawnPositionScooter = FindObjectOfType<ScooterPos>().transform;
         Debug.Log("SpawnPositionScooter : " + spawnData.spawnTransformScooter.position);
         ScooterPackage.transform.position = spawnData.spawnTransformScooter.position;
