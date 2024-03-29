@@ -20,6 +20,8 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
     [SerializeField] Transform crashCollider;
     [SerializeField] Transform crashCollider2;
     [SerializeField] ParticleSystem crashParticlesPrefab;
+    [SerializeField] CustomTimer waitTimer;
+
 
     [Header("Input")]
     [SerializeField] KeyCode gasInput = KeyCode.W;
@@ -62,6 +64,9 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
         Cursor.lockState = CursorLockMode.Locked;
 
         appliedSteeringSpeed = steeringSpeed;
+        freezeMovement = true;
+        waitTimer.CreateTimer();
+        waitTimer.timerInstance.OnTimerIsDonePublic += UnFreezeMovement;
     }
 
     // Update is called once per frame
@@ -96,6 +101,10 @@ public class ScooterController : MonoBehaviour, IPlayerTracer
                 isDrifting = false;
             }
         }
+    }
+    private void UnFreezeMovement()
+    {
+        freezeMovement = false;
     }
 
     void Gas()

@@ -9,38 +9,45 @@ public class PlayerNetwork : NetworkBehaviour
 {
     public static event Action<PlayerNetwork> OnConnected;
 
-    [SerializeField] private GameEvent gameEvent;
     [SerializeField] private GameEvent clientIsLinked;
+    [SerializeField] private GameEvent OnEndSequence;
+    [SerializeField] private EventList eventListScripableObject;
 
     public override void OnNetworkSpawn()
     {
         if (!IsOwner) return;
         OnConnected?.Invoke(this);
-        ChooserManager.OnSendEvent += PrepareEventpackage;
         clientIsLinked?.Invoke();
+
+        if (OwnerClientId == 1)
+        {
+            gameObject.AddComponent<Client>();
+        }
     }
 
     private void Update()
     {
         if (!IsOwner) return;
 
-        if (Input.GetKeyDown(KeyCode.B) && OwnerClientId == 1)
+        if (Input.GetKeyDown(KeyCode.B) && OwnerClientId == 0)
         {
-            PrepareEventpackage(gameEvent);
+            OnEndSequence?.Invoke();
         }
     }
 
-    private void PrepareEventpackage(GameEvent _gameEvent)
+    public void PrepareEventpackage(int _index)
     {
-        gameEvent = _gameEvent;
-        TestServerRpc();
+        Debug.Log(" prepare Event Invoked : " + eventListScripableObject.gameEvents[_index].name);
+        TestServerRpc(_index);
     }
 
     [ServerRpc]
-    private void TestServerRpc()
+    private void TestServerRpc(int _index)
     {
-        Debug.Log("Test Event : " + gameEvent.name);
+
+        Debug.Log("Rpc Event Invoked : " + eventListScripableObject.gameEvents[_index].name);
+        eventListScripableObject.gameEvents[_index]?.Invoke();
         //_dataEventPackage._gameEvent?.Invoke();
-        gameEvent?.Invoke();
+
     }
 }
